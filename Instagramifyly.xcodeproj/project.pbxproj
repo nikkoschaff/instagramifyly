@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		71813EE31A41EBDC00221D76 /* ThirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71813EE21A41EBDC00221D76 /* ThirdViewController.m */; };
 		71AA87241A3C798F00FC9410 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 71AA87231A3C798F00FC9410 /* main.m */; };
 		71AA87271A3C798F00FC9410 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 71AA87261A3C798F00FC9410 /* AppDelegate.m */; };
 		71AA872A1A3C798F00FC9410 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71AA87291A3C798F00FC9410 /* FirstViewController.m */; };
@@ -28,6 +29,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		71813EE11A41EBDC00221D76 /* ThirdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdViewController.h; sourceTree = "<group>"; };
+		71813EE21A41EBDC00221D76 /* ThirdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThirdViewController.m; sourceTree = "<group>"; };
 		71AA871E1A3C798F00FC9410 /* Instagramifyly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instagramifyly.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71AA87221A3C798F00FC9410 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		71AA87231A3C798F00FC9410 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -90,6 +93,8 @@
 				71AA87291A3C798F00FC9410 /* FirstViewController.m */,
 				71AA872B1A3C798F00FC9410 /* SecondViewController.h */,
 				71AA872C1A3C798F00FC9410 /* SecondViewController.m */,
+				71813EE11A41EBDC00221D76 /* ThirdViewController.h */,
+				71813EE21A41EBDC00221D76 /* ThirdViewController.m */,
 				71AA872E1A3C798F00FC9410 /* Main.storyboard */,
 				71AA87311A3C798F00FC9410 /* Images.xcassets */,
 				71AA87331A3C798F00FC9410 /* LaunchScreen.xib */,
@@ -225,6 +230,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				71AA872D1A3C798F00FC9410 /* SecondViewController.m in Sources */,
+				71813EE31A41EBDC00221D76 /* ThirdViewController.m in Sources */,
 				71AA87271A3C798F00FC9410 /* AppDelegate.m in Sources */,
 				71AA872A1A3C798F00FC9410 /* FirstViewController.m in Sources */,
 				71AA87241A3C798F00FC9410 /* main.m in Sources */,
@@ -418,6 +424,7 @@
 				71AA87461A3C798F00FC9410 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		71AA87471A3C798F00FC9410 /* Build configuration list for PBXNativeTarget "InstagramifylyTests" */ = {
 			isa = XCConfigurationList;
@@ -426,6 +433,7 @@
 				71AA87491A3C798F00FC9410 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
