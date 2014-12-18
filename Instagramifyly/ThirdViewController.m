@@ -21,7 +21,6 @@
 
 -(void)viewDidAppear:(BOOL)animated
 {
-    NSLog(@"ThirdViewController has loaded, hooray!");
 }
 
 - (void)didReceiveMemoryWarning {
