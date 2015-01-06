@@ -10,6 +10,9 @@
 
 @interface SecondViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIButton *takePhotoButton;
+
+-(IBAction)takePhotoButtonPressed:(id)sender;
 
 @end
 
