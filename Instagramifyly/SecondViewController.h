@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CameraViewController.h"
 
-@interface SecondViewController : UIViewController
+@interface SecondViewController : UIViewController <CameraViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *takePhotoButton;
 
