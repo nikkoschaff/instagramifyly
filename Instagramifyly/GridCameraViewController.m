@@ -6,13 +6,17 @@
 //  Copyright (c) 2015 Nikko Mitrano Schaff. All rights reserved.
 //
 
-#import "CameraViewController.h"
+#import "GridCameraViewController.h"
 
-@interface CameraViewController ()
+@interface GridCameraViewController ()
 
 @end
 
-@implementation CameraViewController
+
+@implementation GridCameraViewController
+
+@synthesize horizontalLines;
+@synthesize verticalLines;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -22,28 +26,25 @@
     [self addViewsToViewHierarchy];
     [self setupImageCapture];
     [self createCancelButton];
-    
-    if ([self respondsToSelector:@selector(setNeedsStatusBarAppearanceUpdate)]) {
-        // iOS 7
-        [self performSelector:@selector(setNeedsStatusBarAppearanceUpdate)];
-    } else {
-        // iOS 6
-        [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
-    }
-}
-
-- (BOOL)prefersStatusBarHidden {
-    return YES;
 }
 
 - (void) createViews {
     self.imagePreview = [UIView new];
-    self.cameraToolbar = [[CameraToolbar alloc] initWithImageNames:@[@"rotate", @"sample"]];
+    self.topView = [UIToolbar new];
+    self.bottomView = [UIToolbar new];
+    self.cameraToolbar = [[CameraToolbar alloc] initWithImageNames:@[@"rotate", @"road"]];
     self.cameraToolbar.delegate = self;
+    UIColor *blackBG = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:.15];
+    self.topView.barTintColor = blackBG;
+    self.bottomView.barTintColor = blackBG;
+    self.topView.alpha = 0.5;
+    self.bottomView.alpha = 0.5;
 }
 
 - (void) addViewsToViewHierarchy {
-    NSMutableArray *views = [@[self.imagePreview] mutableCopy];
+    NSMutableArray *views = [@[self.imagePreview, self.topView, self.bottomView] mutableCopy];
+    [views addObjectsFromArray:self.horizontalLines];
+    [views addObjectsFromArray:self.verticalLines];
     [views addObject:self.cameraToolbar];
     
     for (UIView *view in views) {
@@ -51,6 +52,33 @@
     }
 }
 
+- (NSArray *) horizontalLines {
+    if (!self.horizontalLines) {
+        self.horizontalLines = [self newArrayOfFourWhiteViews];
+    }
+    
+    return self.horizontalLines;
+}
+
+- (NSArray *) verticalLines {
+    if (!self.verticalLines) {
+        self.verticalLines = [self newArrayOfFourWhiteViews];
+    }
+    
+    return self.verticalLines;
+}
+
+- (NSArray *) newArrayOfFourWhiteViews {
+    NSMutableArray *array = [NSMutableArray array];
+    
+    for (int i = 0; i < 4; i++) {
+        UIView *view = [UIView new];
+        view.backgroundColor = [UIColor whiteColor];
+        [array addObject:view];
+    }
+    
+    return array;
+}
 
 - (void) setupImageCapture {
     self.session = [[AVCaptureSession alloc] init];
@@ -94,7 +122,7 @@
 }
 
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
-    [self.delegate cameraViewController:self didCompleteWithImage:nil];
+    [self.delegate gridcameraViewController:self didCompleteWithImage:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -106,22 +134,43 @@
     UIImage *cancelImage = [UIImage imageNamed:@"x"];
     UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithImage:cancelImage style:UIBarButtonItemStyleDone target:self action:@selector(cancelPressed:)];
     self.navigationItem.leftBarButtonItem = cancelButton;
-    [[UINavigationBar appearance] setBarTintColor:[UIColor blackColor]];
 }
 
 - (void) cancelPressed:(UIBarButtonItem *)sender {
-    [self.delegate cameraViewController:self didCompleteWithImage:nil];
+    [self.delegate gridcameraViewController:self didCompleteWithImage:nil];
 }
 
 - (void)viewWillLayoutSubviews {
     [super viewWillLayoutSubviews];
     
     CGFloat width = CGRectGetWidth(self.view.bounds);
+    self.topView.frame = CGRectMake(0, self.topLayoutGuide.length, width, 44);
+    
+    CGFloat yOriginOfBottomView = CGRectGetMaxY(self.topView.frame) + width;
+    CGFloat heightOfBottomView = CGRectGetHeight(self.view.frame) - yOriginOfBottomView;
+    self.bottomView.frame = CGRectMake(0, yOriginOfBottomView, width, heightOfBottomView);
+    
+    CGFloat thirdOfWidth = width / 3;
+    
+    for (int i = 0; i < 4; i++) {
+        UIView *horizontalLine = self.horizontalLines[i];
+        UIView *verticalLine = self.verticalLines[i];
+        
+        horizontalLine.frame = CGRectMake(0, (i * thirdOfWidth) + CGRectGetMaxY(self.topView.frame), width, 0.5);
+        
+        CGRect verticalFrame = CGRectMake(i * thirdOfWidth, CGRectGetMaxY(self.topView.frame), 0.5, width);
+        
+        if (i == 3) {
+            verticalFrame.origin.x -= 0.5;
+        }
+        
+        verticalLine.frame = verticalFrame;
+    }
     
     self.imagePreview.frame = self.view.bounds;
     self.captureVideoPreviewLayer.frame = self.imagePreview.bounds;
     
-    CGFloat cameraToolbarHeight = 200;
+    CGFloat cameraToolbarHeight = 100;
     self.cameraToolbar.frame = CGRectMake(0, CGRectGetHeight(self.view.bounds) - cameraToolbarHeight, width, cameraToolbarHeight);
 }
 
@@ -167,6 +216,7 @@
 - (void) cameraButtonPressedOnToolbar:(CameraToolbar *)toolbar {
     AVCaptureConnection *videoConnection;
     
+    // Find the right connection object
     for (AVCaptureConnection *connection in self.stillImageOutput.connections) {
         for (AVCaptureInputPort *port in connection.inputPorts) {
             if ([port.mediaType isEqual:AVMediaTypeVideo]) {
@@ -184,8 +234,23 @@
             image = [image imageWithFixedOrientation];
             image = [image imageResizedToMatchAspectRatioOfSize:self.captureVideoPreviewLayer.bounds.size];
             
+            UIView *leftLine = self.verticalLines.firstObject;
+            UIView *rightLine = self.verticalLines.lastObject;
+            UIView *topLine = self.horizontalLines.firstObject;
+            UIView *bottomLine = self.horizontalLines.lastObject;
+            
+            CGRect gridRect = CGRectMake(CGRectGetMinX(leftLine.frame),
+                                         CGRectGetMinY(topLine.frame),
+                                         CGRectGetMaxX(rightLine.frame) - CGRectGetMinX(leftLine.frame),
+                                         CGRectGetMinY(bottomLine.frame) - CGRectGetMinY(topLine.frame));
+            
+            CGRect cropRect = gridRect;
+            cropRect.origin.x = (CGRectGetMinX(gridRect) + (image.size.width - CGRectGetWidth(gridRect)) / 2);
+            
+            image = [image imageCroppedToRect:cropRect];
+            
             dispatch_async(dispatch_get_main_queue(), ^{
-                [self.delegate cameraViewController:self didCompleteWithImage:image];
+                [self.delegate gridcameraViewController:self didCompleteWithImage:image];
             });
         } else {
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -197,6 +262,14 @@
     }];
 }
 
-
+/*
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

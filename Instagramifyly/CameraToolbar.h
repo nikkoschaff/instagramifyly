@@ -28,8 +28,6 @@
 @property (nonatomic, strong) UIButton *cameraButton;
 @property (nonatomic, strong) UIButton *rightButton;
 
-@property (nonatomic, strong) UIView *whiteView;
-@property (nonatomic, strong) UIView *purpleView;
-
+@property (nonatomic, strong) UIView *blackView;
 
 @end

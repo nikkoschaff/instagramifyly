@@ -12,23 +12,28 @@
 #import "UIImage+ImageUtilities.h"
 #import "CameraToolbar.h"
 
-@class CameraViewController;
+@class GridCameraViewController;
 
-@protocol CameraViewControllerDelegate <NSObject>
+@protocol GridCameraViewControllerDelegate <NSObject>
 
-- (void) cameraViewController:(CameraViewController *)cameraViewController didCompleteWithImage:(UIImage *)image;
+- (void) gridcameraViewController:(GridCameraViewController *)cameraViewController didCompleteWithImage:(UIImage *)image;
 
 @end
 
-@interface CameraViewController : UIViewController <CameraToolbarDelegate, UIAlertViewDelegate>
+@interface GridCameraViewController : UIViewController <CameraToolbarDelegate, UIAlertViewDelegate>
 
-@property (nonatomic, weak) NSObject <CameraViewControllerDelegate> *delegate;
+@property (nonatomic, weak) NSObject <GridCameraViewControllerDelegate> *delegate;
 
 @property (nonatomic, strong) UIView *imagePreview;
 
 @property (nonatomic, strong) AVCaptureSession *session;
 @property (nonatomic, strong) AVCaptureVideoPreviewLayer *captureVideoPreviewLayer;
 @property (nonatomic, strong) AVCaptureStillImageOutput *stillImageOutput;
+
+@property (nonatomic, strong) NSArray *horizontalLines;
+@property (nonatomic, strong) NSArray *verticalLines;
+@property (nonatomic, strong) UIToolbar *topView;
+@property (nonatomic, strong) UIToolbar *bottomView;
 
 @property (nonatomic, strong) CameraToolbar *cameraToolbar;
 
