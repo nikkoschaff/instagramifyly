@@ -29,11 +29,11 @@
         
         [self.cameraButton setImage:[UIImage imageNamed:@"camera"] forState:UIControlStateNormal];
         
-        self.blackView = [UIView new];
-        self.blackView.backgroundColor = [UIColor blackColor];
+        self.whiteView = [UIView new];
+        self.whiteView.backgroundColor = [UIColor whiteColor];
         
         
-        for (UIView *view in @[self.blackView, self.leftButton, self.cameraButton, self.rightButton]) {
+        for (UIView *view in @[self.whiteView, self.leftButton, self.cameraButton, self.rightButton]) {
             [self addSubview:view];
         }
     }
@@ -44,16 +44,16 @@
 - (void) layoutSubviews {
     [super layoutSubviews];
     
-    CGRect blackFrame = self.bounds;
-    blackFrame.origin.y += 10;
-    self.blackView.frame = blackFrame;
+    CGRect whiteFrame = self.bounds;
+    whiteFrame.origin.y += 10;
+    self.whiteView.frame = whiteFrame;
     
     CGFloat buttonWidth = CGRectGetWidth(self.bounds) / 3;
     
     NSArray *buttons = @[self.leftButton, self.cameraButton, self.rightButton];
     for (int i = 0; i < 3; i++) {
         UIButton *button = buttons[i];
-        button.frame = CGRectMake(i * buttonWidth, 10, buttonWidth, CGRectGetHeight(blackFrame));
+        button.frame = CGRectMake(i * buttonWidth, 10, buttonWidth, CGRectGetHeight(whiteFrame));
     }
 }
 

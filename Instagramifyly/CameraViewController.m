@@ -18,11 +18,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [self createViews];
-    [self addViewsToViewHierarchy];
-    [self setupImageCapture];
-    [self createCancelButton];
-    
     if ([self respondsToSelector:@selector(setNeedsStatusBarAppearanceUpdate)]) {
         // iOS 7
         [self performSelector:@selector(setNeedsStatusBarAppearanceUpdate)];
@@ -30,6 +25,14 @@
         // iOS 6
         [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
     }
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [self createViews];
+    [self addViewsToViewHierarchy];
+    [self setupImageCapture];
+    [self createCancelButton];
 }
 
 - (BOOL)prefersStatusBarHidden {
@@ -106,7 +109,7 @@
     UIImage *cancelImage = [UIImage imageNamed:@"x"];
     UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithImage:cancelImage style:UIBarButtonItemStyleDone target:self action:@selector(cancelPressed:)];
     self.navigationItem.leftBarButtonItem = cancelButton;
-    [[UINavigationBar appearance] setBarTintColor:[UIColor blackColor]];
+    [[UINavigationBar appearance] setBarTintColor:[UIColor whiteColor]];
 }
 
 - (void) cancelPressed:(UIBarButtonItem *)sender {
