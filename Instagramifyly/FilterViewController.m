@@ -8,6 +8,8 @@
 
 #import "FilterViewController.h"
 
+#import "AssetsLibrary/AssetsLibrary.h"
+
 @interface FilterViewController ()
 
 @end
@@ -262,14 +264,26 @@
 - (void) alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
     if (buttonIndex != alertView.cancelButtonIndex) {
         
-        NSString *caption = [alertView textFieldAtIndex:0].text;
+        self.caption = [alertView textFieldAtIndex:0].text;
         
-        UIImageWriteToSavedPhotosAlbum(self.previewImageView.image, nil, nil, nil);
+        ALAssetsLibrary *library = [ALAssetsLibrary new];
         
-        NSString *storyboardName = @"Main";
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
-        UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"tab_bar_controller"];
-        [self presentViewController:vc animated:YES completion:nil];
+        [library writeImageToSavedPhotosAlbum:[self.previewImageView.image CGImage] orientation:(ALAssetOrientation)[self.previewImageView.image imageOrientation] completionBlock:^(NSURL *assetURL, NSError *error) {
+            if (error) {
+                NSLog(@"error");
+            } else {
+                FilteredImage *filteredImage = [[FilteredImage alloc] initWithCaption:self.caption andURL:assetURL];
+                [FilteredImage.imagesDictionary setObject:filteredImage forKey:self.caption];
+                
+                NSString *storyboardName = @"Main";
+                UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
+                UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"tab_bar_controller"];
+                [self presentViewController:vc animated:YES completion:nil];
+            }
+        }];
+        
+
+
     }
 }
 

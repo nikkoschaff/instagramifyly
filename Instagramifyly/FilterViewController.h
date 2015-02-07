@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#import "FilteredImage.h"
+
 @interface FilterViewController : UIViewController <UICollectionViewDataSource,UICollectionViewDelegate,UIAlertViewDelegate>
 
 -(instancetype) initWithImage:(UIImage*)sourceImage;
@@ -23,5 +25,7 @@
 
 @property (nonatomic, strong) UIButton *saveButton;
 @property (nonatomic, strong) UIBarButtonItem *saveBarButton;
+
+@property (nonatomic,strong) NSString *caption;
 
 @end

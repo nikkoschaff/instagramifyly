@@ -7,6 +7,7 @@
 //
 
 #import "FirstViewController.h"
+#import "FilteredImage.h"
 
 @interface FirstViewController ()
 
@@ -21,8 +22,7 @@
 
 -(void)viewDidAppear:(BOOL)animated
 {
-    
-    
+    NSLog(@"Images: %@",FilteredImage.imagesDictionary);    
 }
 
 - (void)didReceiveMemoryWarning {
