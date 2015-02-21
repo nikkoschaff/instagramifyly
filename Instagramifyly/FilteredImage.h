@@ -12,9 +12,10 @@
 
 @property NSString *caption;
 @property NSURL *url;
+@property UIImage *image;
 
 +(NSMutableDictionary*)imagesDictionary;
 
--(instancetype) initWithCaption:(NSString*)caption andURL:(NSURL*)url;
+-(instancetype)initWithCaption:(NSString*)caption andURL:(NSURL*)url;
 
 @end

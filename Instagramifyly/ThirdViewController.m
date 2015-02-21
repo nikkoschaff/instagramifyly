@@ -7,6 +7,8 @@
 //
 
 #import "ThirdViewController.h"
+#import "FilteredImage.h"
+#import "AssetsLibrary/AssetsLibrary.h"
 
 @interface ThirdViewController ()
 
@@ -21,6 +23,19 @@
 
 -(void)viewDidAppear:(BOOL)animated
 {
+    
+    NSLog(@"Profile: %@",FilteredImage.imagesDictionary);
+    
+    
+    if (FilteredImage.imagesDictionary.count > 0)
+    {
+        NSString *caption = FilteredImage.imagesDictionary.allKeys.firstObject;
+        FilteredImage *fimage = [FilteredImage.imagesDictionary objectForKey:caption];
+        self.profilePicture.image = fimage.image;
+
+    }
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {

@@ -7,11 +7,14 @@
 //
 
 #import "FilteredImage.h"
+#import "AssetsLibrary/AssetsLibrary.h"
+
 
 @implementation FilteredImage
 
 @synthesize caption;
 @synthesize url;
+@synthesize image;
 
 +(NSMutableDictionary*)imagesDictionary
 {
@@ -33,6 +36,18 @@
     {
         self.caption = theCaption;
         self.url = theUrl;
+        ALAssetsLibrary *library = [ALAssetsLibrary new];
+
+        [library assetForURL:self.url
+                 resultBlock:^(ALAsset *asset) {
+                     ALAssetRepresentation *repr = [asset defaultRepresentation];
+                     CGImageRef cgImg = [repr fullResolutionImage];
+                     self.image = [UIImage imageWithCGImage:cgImg];
+                 } failureBlock:^(NSError *error) {
+                     NSLog(@"Sorry - couldn't find it");
+                 }];
+        self.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:self.url]];
+        NSLog(@"New image: (%@) - %@ at: %@",theCaption,theUrl,self.image);
     }
     return self;
 }

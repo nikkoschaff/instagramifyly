@@ -8,6 +8,7 @@
 
 #import "FirstViewController.h"
 #import "FilteredImage.h"
+#import "PhotoTableViewCell.h"
 
 @interface FirstViewController ()
 
@@ -15,14 +16,28 @@
 
 @implementation FirstViewController
 
+@synthesize photos;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    [self.tableView registerClass:[PhotoTableViewCell class] forCellReuseIdentifier:@"PhotoRowCell"];
 }
 
--(void)viewDidAppear:(BOOL)animated
+-(void)viewWillAppear:(BOOL)animated
 {
-    NSLog(@"Images: %@",FilteredImage.imagesDictionary);    
+    NSLog(@"Images: %@",FilteredImage.imagesDictionary);
+    
+    self.photos = [NSMutableArray new];
+    
+    for (NSString *caption in FilteredImage.imagesDictionary)
+    {
+        FilteredImage *fimage = [FilteredImage.imagesDictionary objectForKey:caption];
+        [photos addObject:fimage];
+    }
+        
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -32,12 +47,35 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 0;
+    return photos.count;
 }
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return nil;
+    static NSString *CellIdentifier = @"PhotoRowCell";
+    
+    PhotoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    if (cell == nil) {
+        cell = (PhotoTableViewCell*)[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    
+    FilteredImage *fimage = [photos objectAtIndex:indexPath.row];
+    
+    cell.caption.text = fimage.caption;
+    cell.image = fimage.image;
+    
+    return cell;
 }
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return NO;
+}
+
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
+    return NO;
+}
+
+
 
 @end

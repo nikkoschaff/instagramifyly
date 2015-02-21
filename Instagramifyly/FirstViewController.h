@@ -8,9 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+
 @interface FirstViewController : UIViewController <UITableViewDelegate,UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+@property (nonatomic,strong) NSMutableArray *photos;
 
 @end
 

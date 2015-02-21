@@ -23,6 +23,7 @@
 		71AA87321A3C798F00FC9410 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71AA87311A3C798F00FC9410 /* Images.xcassets */; };
 		71AA87351A3C798F00FC9410 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71AA87331A3C798F00FC9410 /* LaunchScreen.xib */; };
 		71AA87411A3C798F00FC9410 /* InstagramifylyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 71AA87401A3C798F00FC9410 /* InstagramifylyTests.m */; };
+		71C37D311A98F22A0032A681 /* PhotoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C37D301A98F22A0032A681 /* PhotoTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,8 @@
 		71AA873A1A3C798F00FC9410 /* InstagramifylyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InstagramifylyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		71AA873F1A3C798F00FC9410 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		71AA87401A3C798F00FC9410 /* InstagramifylyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InstagramifylyTests.m; sourceTree = "<group>"; };
+		71C37D2F1A98F22A0032A681 /* PhotoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoTableViewCell.h; sourceTree = "<group>"; };
+		71C37D301A98F22A0032A681 /* PhotoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +134,8 @@
 				710131BF1A86519100934675 /* FilterViewController.m */,
 				710131C41A8676F100934675 /* FilteredImage.h */,
 				710131C51A8676F100934675 /* FilteredImage.m */,
+				71C37D2F1A98F22A0032A681 /* PhotoTableViewCell.h */,
+				71C37D301A98F22A0032A681 /* PhotoTableViewCell.m */,
 			);
 			path = Instagramifyly;
 			sourceTree = "<group>";
@@ -271,6 +276,7 @@
 				71AA87271A3C798F00FC9410 /* AppDelegate.m in Sources */,
 				710131C61A8676F100934675 /* FilteredImage.m in Sources */,
 				714375E11A6C450500287542 /* UIImage+ImageUtilities.m in Sources */,
+				71C37D311A98F22A0032A681 /* PhotoTableViewCell.m in Sources */,
 				71AA872A1A3C798F00FC9410 /* FirstViewController.m in Sources */,
 				714375DE1A6C434A00287542 /* CameraViewController.m in Sources */,
 				71AA87241A3C798F00FC9410 /* main.m in Sources */,
