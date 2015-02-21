@@ -63,7 +63,7 @@
     cell.caption.text = fimage.caption;
     cell.image = fimage.image;
     cell.backgroundView = [[UIImageView alloc] initWithImage:fimage.image];
-    
+    [cell setUserInteractionEnabled:NO];
     return cell;
 }
 
@@ -73,6 +73,11 @@
 
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
     return NO;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 568;
 }
 
 

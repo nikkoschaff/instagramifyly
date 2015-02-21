@@ -278,7 +278,15 @@
                 NSString *storyboardName = @"Main";
                 UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
                 UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"tab_bar_controller"];
-                [self presentViewController:vc animated:YES completion:nil];
+                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                    //Here your non-main thread.
+                    [NSThread sleepForTimeInterval:0.5f];
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        //Here you returns to main thread.
+                        [self presentViewController:vc animated:YES completion:nil];
+                    });
+                });
+                
             }
         }];
         
