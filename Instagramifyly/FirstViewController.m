@@ -62,6 +62,7 @@
     
     cell.caption.text = fimage.caption;
     cell.image = fimage.image;
+    cell.backgroundView = [[UIImageView alloc] initWithImage:fimage.image];
     
     return cell;
 }
