@@ -45,9 +45,7 @@
                      self.image = [UIImage imageWithCGImage:cgImg];
                  } failureBlock:^(NSError *error) {
                      NSLog(@"Sorry - couldn't find it");
-                 }];
-        self.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:self.url]];
-        NSLog(@"New image: (%@) - %@ at: %@",theCaption,theUrl,self.image);
+        }];
     }
     return self;
 }

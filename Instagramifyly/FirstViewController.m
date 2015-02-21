@@ -26,9 +26,7 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated
-{
-    NSLog(@"Images: %@",FilteredImage.imagesDictionary);
-    
+{    
     self.photos = [NSMutableArray new];
     
     for (NSString *caption in FilteredImage.imagesDictionary)
