@@ -14,17 +14,17 @@
                         <viewControllerLayoutGuide type="bottom" id="4ug-Mw-9AY"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vPI-QQ-uAR">
-                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <items>
                                     <navigationItem title="Instagramifyly" id="yE1-pV-6xp"/>
                                 </items>
                             </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="40" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="svp-Yw-SSF">
-                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="PhotoRowCell" rowHeight="40" id="F3h-uE-mb2">
@@ -53,6 +53,7 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="First" image="first" id="acW-dT-cKf"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="tableView" destination="svp-Yw-SSF" id="KMr-0x-vOY"/>
                     </connections>
@@ -70,21 +71,23 @@
                         <viewControllerLayoutGuide type="bottom" id="Djb-ko-YwX"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Second" image="second" id="cPa-gy-q4n"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="0.0" y="712"/>
+            <point key="canvasLocation" x="25.5" y="743.5"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
                 <tabBarController storyboardIdentifier="tab_bar_controller" id="49e-Tb-3d3" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -109,10 +112,10 @@
                         <viewControllerLayoutGuide type="bottom" id="QOa-TC-D8D"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="5u3-KX-cvR">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="a8j-1A-WE5">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="emptyprofile.gif" translatesAutoresizingMaskIntoConstraints="NO" id="a8j-1A-WE5">
                                 <rect key="frame" x="0.0" y="64" width="150" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="63j-RK-ymr"/>
@@ -120,10 +123,13 @@
                                 </constraints>
                             </imageView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zzr-Hg-36P">
-                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <items>
                                     <navigationItem title="Profile" id="fjK-jJ-Ikq"/>
                                 </items>
+                                <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="20" width="400" height="44"/>
+                                </variation>
                             </navigationBar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SU5-WH-2c5">
                                 <rect key="frame" x="175" y="164" width="10" height="21"/>
@@ -137,14 +143,8 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yt9-HA-xha">
-                                <rect key="frame" x="509" y="184" width="75" height="30"/>
-                                <state key="normal" title="Edit Profile">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yOt-aN-xVw">
-                                <rect key="frame" x="0.0" y="222" width="300" height="30"/>
+                                <rect key="frame" x="0.0" y="222" width="188" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="5D8-iq-QxW"/>
                                 </constraints>
@@ -156,55 +156,92 @@
                                         <exclude reference="5D8-iq-QxW"/>
                                     </mask>
                                 </variation>
+                                <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="222" width="200" height="30"/>
+                                </variation>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QFv-l7-Ak5">
-                                <rect key="frame" x="308" y="222" width="300" height="30"/>
-                                <state key="normal" title="Label">
+                                <rect key="frame" x="196" y="222" width="187" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="2KT-mJ-P1w"/>
+                                </constraints>
+                                <state key="normal" title="List">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="2KT-mJ-P1w"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="208" y="222" width="200" height="30"/>
+                                    <mask key="constraints">
+                                        <include reference="2KT-mJ-P1w"/>
+                                    </mask>
+                                </variation>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ds2-M7-Yog">
-                                <rect key="frame" x="0.0" y="260" width="600" height="291"/>
+                                <rect key="frame" x="0.0" y="260" width="375" height="358"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="260" width="400" height="291"/>
+                                </variation>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Zzr-Hg-36P" firstAttribute="leading" secondItem="a8j-1A-WE5" secondAttribute="leading" id="2cg-n6-z1Y"/>
+                            <constraint firstItem="QFv-l7-Ak5" firstAttribute="leading" secondItem="yOt-aN-xVw" secondAttribute="trailing" constant="8" symbolic="YES" id="4KI-f1-Xhd"/>
                             <constraint firstItem="ds2-M7-Yog" firstAttribute="bottom" secondItem="QOa-TC-D8D" secondAttribute="top" id="6fq-1E-FPU"/>
                             <constraint firstItem="ds2-M7-Yog" firstAttribute="top" secondItem="yOt-aN-xVw" secondAttribute="bottom" constant="8" symbolic="YES" id="B6A-Ca-xmH"/>
+                            <constraint firstItem="ds2-M7-Yog" firstAttribute="leading" secondItem="5u3-KX-cvR" secondAttribute="leading" id="D8w-zX-s2z"/>
+                            <constraint firstItem="QFv-l7-Ak5" firstAttribute="baseline" secondItem="yOt-aN-xVw" secondAttribute="baseline" id="Fjo-uH-Rd6"/>
                             <constraint firstItem="tf9-eB-oRV" firstAttribute="top" secondItem="SU5-WH-2c5" secondAttribute="bottom" constant="8" symbolic="YES" id="LMi-5y-nnx"/>
-                            <constraint firstAttribute="trailing" secondItem="Zzr-Hg-36P" secondAttribute="trailing" id="LR3-7o-bP2"/>
                             <constraint firstItem="yOt-aN-xVw" firstAttribute="top" secondItem="a8j-1A-WE5" secondAttribute="bottom" constant="8" symbolic="YES" id="LjG-sL-nR0"/>
                             <constraint firstItem="SU5-WH-2c5" firstAttribute="centerX" secondItem="tf9-eB-oRV" secondAttribute="centerX" id="PZ0-p5-Iv6"/>
                             <constraint firstItem="yOt-aN-xVw" firstAttribute="width" secondItem="QFv-l7-Ak5" secondAttribute="width" id="QIk-Lb-gQV"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="QFv-l7-Ak5" secondAttribute="trailing" constant="-24" id="WFI-2U-DFR"/>
-                            <constraint firstItem="yt9-HA-xha" firstAttribute="trailing" secondItem="5u3-KX-cvR" secondAttribute="trailingMargin" id="WOw-4X-kJg"/>
                             <constraint firstItem="yOt-aN-xVw" firstAttribute="leading" secondItem="ds2-M7-Yog" secondAttribute="leading" id="YdD-Lh-tqd"/>
                             <constraint firstItem="Zzr-Hg-36P" firstAttribute="top" secondItem="tND-78-rIR" secondAttribute="bottom" id="flp-YK-SoD"/>
-                            <constraint firstItem="QFv-l7-Ak5" firstAttribute="top" secondItem="yt9-HA-xha" secondAttribute="bottom" constant="8" symbolic="YES" id="gRK-R1-AFC"/>
                             <constraint firstItem="a8j-1A-WE5" firstAttribute="top" secondItem="Zzr-Hg-36P" secondAttribute="bottom" id="kAJ-SD-Ell"/>
                             <constraint firstItem="QFv-l7-Ak5" firstAttribute="leading" secondItem="yOt-aN-xVw" secondAttribute="trailing" constant="8" symbolic="YES" id="kqr-De-LA3"/>
                             <constraint firstItem="yOt-aN-xVw" firstAttribute="baseline" secondItem="QFv-l7-Ak5" secondAttribute="baseline" id="lAA-wX-Pnd"/>
-                            <constraint firstItem="ds2-M7-Yog" firstAttribute="leading" secondItem="5u3-KX-cvR" secondAttribute="leading" id="lj7-Ka-sMH"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="QFv-l7-Ak5" secondAttribute="trailing" constant="-24" id="mgG-o7-vxf"/>
                             <constraint firstItem="a8j-1A-WE5" firstAttribute="leading" secondItem="yOt-aN-xVw" secondAttribute="leading" id="qRp-nz-Qzc"/>
                             <constraint firstItem="tf9-eB-oRV" firstAttribute="leading" secondItem="a8j-1A-WE5" secondAttribute="trailing" constant="8" symbolic="YES" id="sGN-qy-a8d"/>
                             <constraint firstItem="ds2-M7-Yog" firstAttribute="trailing" secondItem="Zzr-Hg-36P" secondAttribute="trailing" id="t7q-Cd-1Ef"/>
                             <constraint firstItem="yOt-aN-xVw" firstAttribute="top" secondItem="tf9-eB-oRV" secondAttribute="bottom" constant="8" symbolic="YES" id="tZI-u9-et6"/>
+                            <constraint firstAttribute="trailing" secondItem="Zzr-Hg-36P" secondAttribute="trailing" id="xkQ-4G-RZb"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="4KI-f1-Xhd"/>
+                                <exclude reference="Fjo-uH-Rd6"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="constraints">
+                                <exclude reference="QIk-Lb-gQV"/>
+                                <exclude reference="lAA-wX-Pnd"/>
+                                <include reference="4KI-f1-Xhd"/>
+                                <include reference="Fjo-uH-Rd6"/>
+                                <exclude reference="kqr-De-LA3"/>
+                            </mask>
+                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Third" id="6gr-If-q0R"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="profilePicture" destination="a8j-1A-WE5" id="eaL-fl-VxY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GDa-y2-Row" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="722" y="712"/>
+            <point key="canvasLocation" x="721.5" y="712"/>
         </scene>
     </scenes>
     <resources>
+        <image name="emptyprofile.gif" width="96" height="96"/>
         <image name="first" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
     </resources>
