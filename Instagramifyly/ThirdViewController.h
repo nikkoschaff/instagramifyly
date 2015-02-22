@@ -8,16 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ThirdViewController : UIViewController <UITableViewDelegate,UITableViewDataSource,UITextViewDelegate>
+@interface ThirdViewController : UIViewController <UITableViewDelegate,UITableViewDataSource,UITextViewDelegate,UIImagePickerControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak,nonatomic) IBOutlet UILabel *numPostsLabel;
 @property (weak,nonatomic) IBOutlet UITextView *textView;
+@property (nonatomic,weak) IBOutlet UIImageView *profilePicture;
+@property (nonatomic,weak) IBOutlet UIBarButtonItem *editProfileButton;
+@property (nonatomic,weak) IBOutlet UIBarButtonItem *editTextButton;
 
 @property (nonatomic,strong) NSMutableArray *photos;
+@property (nonatomic,strong) UIImage *selectedProfilePicture;
 
-@property (nonatomic,weak) IBOutlet UIImageView *profilePicture;
-
-
+-(IBAction)editProfileButtonClicked:(id)sender;
+-(IBAction)editTextButtonClicked:(id)sender;
 
 @end

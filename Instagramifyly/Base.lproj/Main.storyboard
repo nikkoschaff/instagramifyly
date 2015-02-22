@@ -125,7 +125,18 @@
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zzr-Hg-36P">
                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <items>
-                                    <navigationItem title="Profile" id="fjK-jJ-Ikq"/>
+                                    <navigationItem title="Profile" id="fjK-jJ-Ikq">
+                                        <barButtonItem key="leftBarButtonItem" title="Edit Photo" id="5Ou-eB-D4t">
+                                            <connections>
+                                                <action selector="editProfileButtonClicked:" destination="iFY-ip-4hu" id="83K-qD-Nn0"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Edit Description" id="7du-9T-jOy">
+                                            <connections>
+                                                <action selector="editTextButtonClicked:" destination="iFY-ip-4hu" id="baf-rJ-D7l"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
                                 </items>
                                 <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
                                     <rect key="frame" x="0.0" y="20" width="400" height="44"/>
@@ -250,6 +261,8 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="editProfileButton" destination="5Ou-eB-D4t" id="Aes-nM-2PU"/>
+                        <outlet property="editTextButton" destination="7du-9T-jOy" id="A9e-5e-fAy"/>
                         <outlet property="numPostsLabel" destination="SU5-WH-2c5" id="5j3-pz-C9g"/>
                         <outlet property="profilePicture" destination="a8j-1A-WE5" id="eaL-fl-VxY"/>
                         <outlet property="tableView" destination="ds2-M7-Yog" id="Zes-RB-kC2"/>

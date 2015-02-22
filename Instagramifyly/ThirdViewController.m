@@ -16,6 +16,7 @@
 
 @implementation ThirdViewController
 
+@synthesize selectedProfilePicture;
 @synthesize photos;
 
 - (void)viewDidLoad {
@@ -80,6 +81,58 @@
     return 568;
 }
 
+- (BOOL) startMediaBrowserFromViewController: (UIViewController*) controller
+                               usingDelegate: (id <UIImagePickerControllerDelegate,
+                                               UINavigationControllerDelegate>) delegate {
+    
+    if (([UIImagePickerController isSourceTypeAvailable:
+          UIImagePickerControllerSourceTypeSavedPhotosAlbum] == NO)
+        || (delegate == nil)
+        || (controller == nil))
+        return NO;
+    
+    UIImagePickerController *mediaUI = [[UIImagePickerController alloc] init];
+    mediaUI.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+    
+    // Displays saved pictures and movies, if both are available, from the
+    // Camera Roll album.
+    mediaUI.mediaTypes =
+    [UIImagePickerController availableMediaTypesForSourceType:
+     UIImagePickerControllerSourceTypeSavedPhotosAlbum];
+    
+    // Hides the controls for moving & scaling pictures, or for
+    // trimming movies. To instead show the controls, use YES.
+    mediaUI.allowsEditing = NO;
+    
+    mediaUI.delegate = delegate;
+    
+    [controller presentViewController:mediaUI animated:YES completion:^{
+        //TODO
+    }];
+    return YES;
+}
+
+-(IBAction)editProfileButtonClicked:(id)sender
+{
+    
+}
+
+-(IBAction)editTextButtonClicked:(id)sender
+{
+    if ([self.editTextButton.title isEqualToString:@"Edit Description"]) {
+        [self.textView becomeFirstResponder];
+    }
+    else
+    {
+        [self.editTextButton setTitle:@"Edit Description"];
+        [self.textView endEditing:YES];
+    }
+}
+
+-(void)textViewDidBeginEditing:(UITextView *)textView
+{
+    [self.editTextButton setTitle:@"Save"];
+}
 
 /*
 #pragma mark - Navigation
