@@ -32,7 +32,7 @@
     for (NSString *caption in FilteredImage.imagesDictionary)
     {
         FilteredImage *fimage = [FilteredImage.imagesDictionary objectForKey:caption];
-        [photos addObject:fimage];
+        [self.photos addObject:fimage];
     }
         
     [self.tableView reloadData];

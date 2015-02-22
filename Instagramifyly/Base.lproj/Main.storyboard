@@ -131,14 +131,8 @@
                                     <rect key="frame" x="0.0" y="20" width="400" height="44"/>
                                 </variation>
                             </navigationBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SU5-WH-2c5">
-                                <rect key="frame" x="175" y="164" width="10" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Posts" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tf9-eB-oRV">
-                                <rect key="frame" x="158" y="193" width="44" height="21"/>
+                                <rect key="frame" x="219" y="193" width="44" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -186,7 +180,26 @@
                                 <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
                                     <rect key="frame" x="0.0" y="260" width="400" height="291"/>
                                 </variation>
+                                <connections>
+                                    <outlet property="dataSource" destination="iFY-ip-4hu" id="Lub-B8-o2L"/>
+                                    <outlet property="delegate" destination="iFY-ip-4hu" id="ucX-S9-kcm"/>
+                                </connections>
                             </tableView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="(Profile description here)" translatesAutoresizingMaskIntoConstraints="NO" id="KWJ-5j-5R9">
+                                <rect key="frame" x="158" y="64" width="217" height="121"/>
+                                <color key="backgroundColor" red="0.85407210195530725" green="0.85407210195530725" blue="0.85407210195530725" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <connections>
+                                    <outlet property="delegate" destination="iFY-ip-4hu" id="DJK-0U-LaZ"/>
+                                </connections>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SU5-WH-2c5">
+                                <rect key="frame" x="158" y="193" width="44" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -194,23 +207,28 @@
                             <constraint firstItem="QFv-l7-Ak5" firstAttribute="leading" secondItem="yOt-aN-xVw" secondAttribute="trailing" constant="8" symbolic="YES" id="4KI-f1-Xhd"/>
                             <constraint firstItem="ds2-M7-Yog" firstAttribute="bottom" secondItem="QOa-TC-D8D" secondAttribute="top" id="6fq-1E-FPU"/>
                             <constraint firstItem="ds2-M7-Yog" firstAttribute="top" secondItem="yOt-aN-xVw" secondAttribute="bottom" constant="8" symbolic="YES" id="B6A-Ca-xmH"/>
-                            <constraint firstItem="ds2-M7-Yog" firstAttribute="leading" secondItem="5u3-KX-cvR" secondAttribute="leading" id="D8w-zX-s2z"/>
+                            <constraint firstItem="a8j-1A-WE5" firstAttribute="top" secondItem="KWJ-5j-5R9" secondAttribute="top" id="ERX-nc-oE3"/>
+                            <constraint firstItem="Zzr-Hg-36P" firstAttribute="trailing" secondItem="KWJ-5j-5R9" secondAttribute="trailing" id="FNH-Jo-VYj"/>
                             <constraint firstItem="QFv-l7-Ak5" firstAttribute="baseline" secondItem="yOt-aN-xVw" secondAttribute="baseline" id="Fjo-uH-Rd6"/>
-                            <constraint firstItem="tf9-eB-oRV" firstAttribute="top" secondItem="SU5-WH-2c5" secondAttribute="bottom" constant="8" symbolic="YES" id="LMi-5y-nnx"/>
+                            <constraint firstItem="tf9-eB-oRV" firstAttribute="top" secondItem="SU5-WH-2c5" secondAttribute="bottom" constant="-21" id="LMi-5y-nnx"/>
                             <constraint firstItem="yOt-aN-xVw" firstAttribute="top" secondItem="a8j-1A-WE5" secondAttribute="bottom" constant="8" symbolic="YES" id="LjG-sL-nR0"/>
-                            <constraint firstItem="SU5-WH-2c5" firstAttribute="centerX" secondItem="tf9-eB-oRV" secondAttribute="centerX" id="PZ0-p5-Iv6"/>
+                            <constraint firstItem="SU5-WH-2c5" firstAttribute="top" secondItem="KWJ-5j-5R9" secondAttribute="bottom" constant="8" symbolic="YES" id="NHJ-41-vXo"/>
+                            <constraint firstItem="SU5-WH-2c5" firstAttribute="centerX" secondItem="tf9-eB-oRV" secondAttribute="centerX" constant="-61" id="PZ0-p5-Iv6"/>
                             <constraint firstItem="yOt-aN-xVw" firstAttribute="width" secondItem="QFv-l7-Ak5" secondAttribute="width" id="QIk-Lb-gQV"/>
+                            <constraint firstItem="SU5-WH-2c5" firstAttribute="leading" secondItem="KWJ-5j-5R9" secondAttribute="leading" id="YIx-Ot-SJr"/>
                             <constraint firstItem="yOt-aN-xVw" firstAttribute="leading" secondItem="ds2-M7-Yog" secondAttribute="leading" id="YdD-Lh-tqd"/>
                             <constraint firstItem="Zzr-Hg-36P" firstAttribute="top" secondItem="tND-78-rIR" secondAttribute="bottom" id="flp-YK-SoD"/>
+                            <constraint firstAttribute="trailing" secondItem="ds2-M7-Yog" secondAttribute="trailing" id="iip-ac-0gM"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="QFv-l7-Ak5" secondAttribute="trailing" constant="-24" id="jpM-aZ-6pD"/>
+                            <constraint firstItem="a8j-1A-WE5" firstAttribute="leading" secondItem="5u3-KX-cvR" secondAttribute="leading" id="jwF-4x-ku3"/>
                             <constraint firstItem="a8j-1A-WE5" firstAttribute="top" secondItem="Zzr-Hg-36P" secondAttribute="bottom" id="kAJ-SD-Ell"/>
                             <constraint firstItem="QFv-l7-Ak5" firstAttribute="leading" secondItem="yOt-aN-xVw" secondAttribute="trailing" constant="8" symbolic="YES" id="kqr-De-LA3"/>
                             <constraint firstItem="yOt-aN-xVw" firstAttribute="baseline" secondItem="QFv-l7-Ak5" secondAttribute="baseline" id="lAA-wX-Pnd"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="QFv-l7-Ak5" secondAttribute="trailing" constant="-24" id="mgG-o7-vxf"/>
+                            <constraint firstItem="KWJ-5j-5R9" firstAttribute="leading" secondItem="a8j-1A-WE5" secondAttribute="trailing" constant="8" symbolic="YES" id="m68-aK-mE3"/>
                             <constraint firstItem="a8j-1A-WE5" firstAttribute="leading" secondItem="yOt-aN-xVw" secondAttribute="leading" id="qRp-nz-Qzc"/>
-                            <constraint firstItem="tf9-eB-oRV" firstAttribute="leading" secondItem="a8j-1A-WE5" secondAttribute="trailing" constant="8" symbolic="YES" id="sGN-qy-a8d"/>
+                            <constraint firstItem="tf9-eB-oRV" firstAttribute="leading" secondItem="a8j-1A-WE5" secondAttribute="trailing" constant="69" id="sGN-qy-a8d"/>
                             <constraint firstItem="ds2-M7-Yog" firstAttribute="trailing" secondItem="Zzr-Hg-36P" secondAttribute="trailing" id="t7q-Cd-1Ef"/>
                             <constraint firstItem="yOt-aN-xVw" firstAttribute="top" secondItem="tf9-eB-oRV" secondAttribute="bottom" constant="8" symbolic="YES" id="tZI-u9-et6"/>
-                            <constraint firstAttribute="trailing" secondItem="Zzr-Hg-36P" secondAttribute="trailing" id="xkQ-4G-RZb"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -232,12 +250,15 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="numPostsLabel" destination="SU5-WH-2c5" id="5j3-pz-C9g"/>
                         <outlet property="profilePicture" destination="a8j-1A-WE5" id="eaL-fl-VxY"/>
+                        <outlet property="tableView" destination="ds2-M7-Yog" id="Zes-RB-kC2"/>
+                        <outlet property="textView" destination="KWJ-5j-5R9" id="sVZ-IN-1AC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GDa-y2-Row" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="721.5" y="712"/>
+            <point key="canvasLocation" x="721.5" y="711.5"/>
         </scene>
     </scenes>
     <resources>
