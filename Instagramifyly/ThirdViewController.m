@@ -33,9 +33,8 @@
         FilteredImage *fimage = [FilteredImage.imagesDictionary objectForKey:caption];
         [self.photos addObject:fimage];
     }
-    
     [self.tableView reloadData];
-    
+    [self.numPostsLabel setText:[NSString stringWithFormat:@"%lu",(unsigned long)FilteredImage.imagesDictionary.count]];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -81,7 +80,7 @@
     return 568;
 }
 
-- (BOOL) startMediaBrowserFromViewController: (UIViewController*) controller
+- (BOOL)startMediaBrowserFromViewController: (UIViewController*) controller
                                usingDelegate: (id <UIImagePickerControllerDelegate,
                                                UINavigationControllerDelegate>) delegate {
     
@@ -112,9 +111,28 @@
     return YES;
 }
 
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    FilteredImage *selectedFilteredImage = [[FilteredImage alloc] initWithCaption:@"Profile Pic" andURL:[info objectForKey:@"UIImagePickerControllerReferenceURL"]];
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        //Here your non-main thread.
+        [NSThread sleepForTimeInterval:0.5f];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            //Here you returns to main thread.
+            self.selectedProfilePicture = selectedFilteredImage.image;
+            [self.profilePicture setImage:self.selectedProfilePicture];
+            [picker dismissViewControllerAnimated:YES completion:^{
+            }];
+            
+        });
+    });
+}
+
 -(IBAction)editProfileButtonClicked:(id)sender
 {
-    
+    BOOL browseStatus = [self startMediaBrowserFromViewController:self usingDelegate:self];
+    NSLog(@"photo selection result: %hhd",browseStatus);
 }
 
 -(IBAction)editTextButtonClicked:(id)sender

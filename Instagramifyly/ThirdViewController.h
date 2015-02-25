@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ThirdViewController : UIViewController <UITableViewDelegate,UITableViewDataSource,UITextViewDelegate,UIImagePickerControllerDelegate>
+@interface ThirdViewController : UIViewController <UITableViewDelegate,UITableViewDataSource,UITextViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak,nonatomic) IBOutlet UILabel *numPostsLabel;
@@ -22,5 +22,8 @@
 
 -(IBAction)editProfileButtonClicked:(id)sender;
 -(IBAction)editTextButtonClicked:(id)sender;
+- (BOOL)startMediaBrowserFromViewController: (UIViewController*) controller
+                              usingDelegate: (id <UIImagePickerControllerDelegate,
+                                              UINavigationControllerDelegate>) delegate;
 
 @end

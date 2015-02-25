@@ -196,7 +196,7 @@
                                     <outlet property="delegate" destination="iFY-ip-4hu" id="ucX-S9-kcm"/>
                                 </connections>
                             </tableView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="(Profile description here)" translatesAutoresizingMaskIntoConstraints="NO" id="KWJ-5j-5R9">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Say a little about yourself!" translatesAutoresizingMaskIntoConstraints="NO" id="KWJ-5j-5R9">
                                 <rect key="frame" x="158" y="64" width="217" height="121"/>
                                 <color key="backgroundColor" red="0.85407210195530725" green="0.85407210195530725" blue="0.85407210195530725" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
