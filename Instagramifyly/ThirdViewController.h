@@ -19,6 +19,7 @@
 
 @property (nonatomic,strong) NSMutableArray *photos;
 @property (nonatomic,strong) UIImage *selectedProfilePicture;
+@property (nonatomic) BOOL isUsingGridView;
 
 -(IBAction)editProfileButtonClicked:(id)sender;
 -(IBAction)editTextButtonClicked:(id)sender;

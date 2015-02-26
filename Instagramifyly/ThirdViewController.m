@@ -18,10 +18,12 @@
 
 @synthesize selectedProfilePicture;
 @synthesize photos;
+@synthesize isUsingGridView;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.isUsingGridView = NO;
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -131,8 +133,7 @@
 
 -(IBAction)editProfileButtonClicked:(id)sender
 {
-    BOOL browseStatus = [self startMediaBrowserFromViewController:self usingDelegate:self];
-    NSLog(@"photo selection result: %hhd",browseStatus);
+    [self startMediaBrowserFromViewController:self usingDelegate:self];
 }
 
 -(IBAction)editTextButtonClicked:(id)sender
