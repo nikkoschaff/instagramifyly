@@ -164,6 +164,9 @@
                                 <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
                                     <rect key="frame" x="0.0" y="222" width="200" height="30"/>
                                 </variation>
+                                <connections>
+                                    <action selector="gridButtonClicked:" destination="iFY-ip-4hu" eventType="touchUpInside" id="xAU-2k-u6z"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QFv-l7-Ak5">
                                 <rect key="frame" x="196" y="222" width="187" height="30"/>
@@ -184,12 +187,15 @@
                                         <include reference="2KT-mJ-P1w"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <action selector="listButtonClicked:" destination="iFY-ip-4hu" eventType="touchUpInside" id="Vj0-h6-gVZ"/>
+                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ds2-M7-Yog">
                                 <rect key="frame" x="0.0" y="260" width="375" height="358"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PhotoRowCell" id="T7K-sY-87G" customClass="PhotoTableViewCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProfilePhotoRowCell" id="T7K-sY-87G" customClass="PhotoTableViewCell">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="T7K-sY-87G" id="e6u-cf-Nuw">
@@ -220,6 +226,30 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <collectionView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Mqe-b6-geN">
+                                <rect key="frame" x="0.0" y="260" width="375" height="350"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="re6-m2-QH7">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ProfilePhotoCollectionCell" id="sxr-LW-Nzg">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="iFY-ip-4hu" id="Lze-Fy-Jfu"/>
+                                    <outlet property="delegate" destination="iFY-ip-4hu" id="Yrt-xI-euo"/>
+                                </connections>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -270,8 +300,11 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="collectionView" destination="Mqe-b6-geN" id="dkm-6g-GVR"/>
                         <outlet property="editProfileButton" destination="5Ou-eB-D4t" id="Aes-nM-2PU"/>
                         <outlet property="editTextButton" destination="7du-9T-jOy" id="A9e-5e-fAy"/>
+                        <outlet property="gridButton" destination="yOt-aN-xVw" id="FJi-nh-R8c"/>
+                        <outlet property="listButton" destination="QFv-l7-Ak5" id="HM5-9u-Svd"/>
                         <outlet property="numPostsLabel" destination="SU5-WH-2c5" id="5j3-pz-C9g"/>
                         <outlet property="profilePicture" destination="a8j-1A-WE5" id="eaL-fl-VxY"/>
                         <outlet property="tableView" destination="ds2-M7-Yog" id="Zes-RB-kC2"/>

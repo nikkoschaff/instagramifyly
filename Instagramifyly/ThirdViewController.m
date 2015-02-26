@@ -24,6 +24,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.isUsingGridView = NO;
+    [self.tableView setHidden:NO];
+    [self.collectionView setHidden:YES];
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -44,6 +46,7 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - TableView
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -52,7 +55,7 @@
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"PhotoRowCell";
+    static NSString *CellIdentifier = @"ProfilePhotoRowCell";
     
     PhotoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
@@ -62,7 +65,9 @@
     
     FilteredImage *fimage = [photos objectAtIndex:indexPath.row];
     
+    
     cell.caption.text = fimage.caption;
+    NSLog(@"fimage and cell: %@ - %@",fimage.caption,cell.caption);
     cell.image = fimage.image;
     cell.backgroundView = [[UIImageView alloc] initWithImage:fimage.image];
     [cell setUserInteractionEnabled:NO];
@@ -113,6 +118,32 @@
     return YES;
 }
 
+#pragma mark CollectionView
+
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    // TODO
+    return self.photos.count;
+}
+
+-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+{
+    return self.photos.count;
+}
+
+-(UICollectionViewCell*)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CollectionCellIdentifier = @"ProfilePhotoCollectionCell";
+    
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CollectionCellIdentifier forIndexPath:indexPath];
+    
+    cell.backgroundColor = [UIColor blueColor];
+    
+    return cell;
+}
+
+#pragma mark General Interaction
+
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     FilteredImage *selectedFilteredImage = [[FilteredImage alloc] initWithCaption:@"Profile Pic" andURL:[info objectForKey:@"UIImagePickerControllerReferenceURL"]];
@@ -151,6 +182,23 @@
 -(void)textViewDidBeginEditing:(UITextView *)textView
 {
     [self.editTextButton setTitle:@"Save"];
+}
+
+-(IBAction)gridButtonClicked:(id)sender
+{
+    NSLog(@"Grid button clicked");
+    self.isUsingGridView = YES;
+    [self.tableView setHidden:YES];
+    [self.collectionView setHidden:NO];
+}
+
+
+-(IBAction)listButtonClicked:(id)sender
+{
+    NSLog(@"List button clicked");
+    self.isUsingGridView = NO;
+    [self.tableView setHidden:NO];
+    [self.collectionView setHidden:YES];
 }
 
 /*
