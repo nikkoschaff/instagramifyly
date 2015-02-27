@@ -139,10 +139,24 @@
     
     PhotoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CollectionCellIdentifier forIndexPath:indexPath];
     
+    if (cell == nil)
+    {
+        cell = [PhotoCollectionViewCell new];
+    }
+    
     FilteredImage *fimage = [photos objectAtIndex:indexPath.row];
     
-    cell.backgroundColor = [UIColor blueColor];
-    [cell.imageView setImage:fimage.image];
+    cell.backgroundColor = [UIColor whiteColor];
+    [cell.imageView removeFromSuperview];
+    
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:cell.frame];
+    imageView.contentMode = UIViewContentModeScaleToFill;
+    imageView.clipsToBounds = YES;
+    [imageView setUserInteractionEnabled:NO];
+    //imageView.tag = indexPath.row;
+    [imageView setImage:fimage.image];
+    
+    [cell addSubview:imageView];
     [cell setUserInteractionEnabled:NO];
     return cell;
 }
@@ -151,13 +165,13 @@
 
 // 1
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return CGSizeMake(100, 100);
+    return CGSizeMake(150, 150);
 }
 
 // 3
 - (UIEdgeInsets)collectionView:
 (UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-    return UIEdgeInsetsMake(10, 10, 10, 10);
+    return UIEdgeInsetsMake(0, 0, 0, 0);
 }
 
 #pragma mark General Interaction
