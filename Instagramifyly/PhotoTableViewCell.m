@@ -26,7 +26,6 @@
     if (self) {
         // Helpers
         CGSize size = self.contentView.frame.size;
-        
         // Initialize Main Label
         self.caption = [[UILabel alloc] initWithFrame:CGRectMake(8.0, 8.0, size.width - 16.0, size.height - 16.0)];
         
@@ -35,6 +34,7 @@
         [self.caption setTextAlignment:NSTextAlignmentCenter];
         [self.caption setTextColor:[UIColor orangeColor]];
         [self.caption setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];
+
         
         // Add Main Label to Content View
         [self.contentView addSubview:self.caption];

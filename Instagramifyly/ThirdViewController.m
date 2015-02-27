@@ -26,6 +26,7 @@
     self.isUsingGridView = NO;
     [self.tableView setHidden:NO];
     [self.collectionView setHidden:YES];
+    [self.tableView registerClass:[PhotoTableViewCell class] forCellReuseIdentifier:@"PhotoRowCell"];
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -55,19 +56,18 @@
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"ProfilePhotoRowCell";
-    
-    PhotoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    if (cell == nil) {
-        cell = (PhotoTableViewCell*)[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-    }
+    static NSString *CellIdentifier = @"PhotoRowCell";
     
     FilteredImage *fimage = [photos objectAtIndex:indexPath.row];
     
+    PhotoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    cell.caption.text = fimage.caption;
-    NSLog(@"fimage and cell: %@ - %@",fimage.caption,cell.caption);
+    if (cell == nil)
+    {
+        cell = (PhotoTableViewCell*)[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+
+    [cell.caption setText:fimage.caption];
     cell.image = fimage.image;
     cell.backgroundView = [[UIImageView alloc] initWithImage:fimage.image];
     [cell setUserInteractionEnabled:NO];
@@ -140,6 +140,23 @@
     cell.backgroundColor = [UIColor blueColor];
     
     return cell;
+}
+
+#pragma mark – UICollectionViewDelegateFlowLayout
+
+//// 1
+//- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+//    NSString *searchTerm = self.searches[indexPath.section]; FlickrPhoto *photo =
+//    self.searchResults[searchTerm][indexPath.row];
+//    // 2
+//    CGSize retval = photo.thumbnail.size.width > 0 ? photo.thumbnail.size : CGSizeMake(100, 100);
+//    retval.height += 35; retval.width += 35; return retval;
+//}
+
+// 3
+- (UIEdgeInsets)collectionView:
+(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
+    return UIEdgeInsetsMake(50, 20, 50, 20);
 }
 
 #pragma mark General Interaction

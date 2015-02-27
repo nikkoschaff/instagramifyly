@@ -195,7 +195,7 @@
                                 <rect key="frame" x="0.0" y="260" width="375" height="358"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProfilePhotoRowCell" id="T7K-sY-87G" customClass="PhotoTableViewCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PhotoRowCell" id="T7K-sY-87G" customClass="PhotoTableViewCell">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="T7K-sY-87G" id="e6u-cf-Nuw">
