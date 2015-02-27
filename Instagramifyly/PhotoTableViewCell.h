@@ -14,3 +14,4 @@
 @property (strong,nonatomic) UIImage *image;
 
 @end
+

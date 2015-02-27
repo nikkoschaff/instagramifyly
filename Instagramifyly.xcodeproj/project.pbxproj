@@ -15,6 +15,7 @@
 		714375E11A6C450500287542 /* UIImage+ImageUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 714375E01A6C450500287542 /* UIImage+ImageUtilities.m */; };
 		71813EE31A41EBDC00221D76 /* ThirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71813EE21A41EBDC00221D76 /* ThirdViewController.m */; };
 		71A1105A1A73F51B0099984A /* GridCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71A110591A73F51B0099984A /* GridCameraViewController.m */; };
+		71A57A9F1AA08FD500412B38 /* PhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 71A57A9E1AA08FD500412B38 /* PhotoCollectionViewCell.m */; };
 		71AA87241A3C798F00FC9410 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 71AA87231A3C798F00FC9410 /* main.m */; };
 		71AA87271A3C798F00FC9410 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 71AA87261A3C798F00FC9410 /* AppDelegate.m */; };
 		71AA872A1A3C798F00FC9410 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71AA87291A3C798F00FC9410 /* FirstViewController.m */; };
@@ -53,6 +54,8 @@
 		71813EE21A41EBDC00221D76 /* ThirdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThirdViewController.m; sourceTree = "<group>"; };
 		71A110581A73F51B0099984A /* GridCameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridCameraViewController.h; sourceTree = "<group>"; };
 		71A110591A73F51B0099984A /* GridCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GridCameraViewController.m; sourceTree = "<group>"; };
+		71A57A9D1AA08FD500412B38 /* PhotoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoCollectionViewCell.h; sourceTree = "<group>"; };
+		71A57A9E1AA08FD500412B38 /* PhotoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoCollectionViewCell.m; sourceTree = "<group>"; };
 		71AA871E1A3C798F00FC9410 /* Instagramifyly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instagramifyly.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71AA87221A3C798F00FC9410 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		71AA87231A3C798F00FC9410 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -139,6 +142,8 @@
 				710131C51A8676F100934675 /* FilteredImage.m */,
 				71C37D2F1A98F22A0032A681 /* PhotoTableViewCell.h */,
 				71C37D301A98F22A0032A681 /* PhotoTableViewCell.m */,
+				71A57A9D1AA08FD500412B38 /* PhotoCollectionViewCell.h */,
+				71A57A9E1AA08FD500412B38 /* PhotoCollectionViewCell.m */,
 			);
 			path = Instagramifyly;
 			sourceTree = "<group>";
@@ -273,6 +278,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				714375DB1A6C42EF00287542 /* CameraToolbar.m in Sources */,
+				71A57A9F1AA08FD500412B38 /* PhotoCollectionViewCell.m in Sources */,
 				71AA872D1A3C798F00FC9410 /* SecondViewController.m in Sources */,
 				710131C01A86519100934675 /* FilterViewController.m in Sources */,
 				71A1105A1A73F51B0099984A /* GridCameraViewController.m in Sources */,

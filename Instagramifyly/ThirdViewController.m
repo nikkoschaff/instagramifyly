@@ -9,6 +9,7 @@
 #import "ThirdViewController.h"
 #import "FilteredImage.h"
 #import "PhotoTableViewCell.h"
+#import "PhotoCollectionViewCell.h"
 
 @interface ThirdViewController ()
 
@@ -27,6 +28,7 @@
     [self.tableView setHidden:NO];
     [self.collectionView setHidden:YES];
     [self.tableView registerClass:[PhotoTableViewCell class] forCellReuseIdentifier:@"PhotoRowCell"];
+//    [self.collectionView registerClass:[PhotoCollectionViewCell class] forCellReuseIdentifier:@"PhotoCollectionCell"];
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -39,6 +41,7 @@
         [self.photos addObject:fimage];
     }
     [self.tableView reloadData];
+    [self.collectionView reloadData];
     [self.numPostsLabel setText:[NSString stringWithFormat:@"%lu",(unsigned long)FilteredImage.imagesDictionary.count]];
 }
 
@@ -122,41 +125,39 @@
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    // TODO
     return self.photos.count;
 }
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    return self.photos.count;
+    return 1;
 }
 
 -(UICollectionViewCell*)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CollectionCellIdentifier = @"ProfilePhotoCollectionCell";
+    static NSString *CollectionCellIdentifier = @"PhotoCollectionCell";
     
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CollectionCellIdentifier forIndexPath:indexPath];
+    PhotoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CollectionCellIdentifier forIndexPath:indexPath];
+    
+    FilteredImage *fimage = [photos objectAtIndex:indexPath.row];
     
     cell.backgroundColor = [UIColor blueColor];
-    
+    [cell.imageView setImage:fimage.image];
+    [cell setUserInteractionEnabled:NO];
     return cell;
 }
 
 #pragma mark – UICollectionViewDelegateFlowLayout
 
-//// 1
-//- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-//    NSString *searchTerm = self.searches[indexPath.section]; FlickrPhoto *photo =
-//    self.searchResults[searchTerm][indexPath.row];
-//    // 2
-//    CGSize retval = photo.thumbnail.size.width > 0 ? photo.thumbnail.size : CGSizeMake(100, 100);
-//    retval.height += 35; retval.width += 35; return retval;
-//}
+// 1
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    return CGSizeMake(100, 100);
+}
 
 // 3
 - (UIEdgeInsets)collectionView:
 (UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-    return UIEdgeInsetsMake(50, 20, 50, 20);
+    return UIEdgeInsetsMake(10, 10, 10, 10);
 }
 
 #pragma mark General Interaction
