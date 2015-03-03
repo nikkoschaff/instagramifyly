@@ -14,5 +14,17 @@
 @synthesize fimage;
 @synthesize imageView;
 
+-(id)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self)
+    {
+        self.imageView = [UIImageView new];
+        self.imageView.frame = self.bounds;
+        [self addSubview:self.imageView];
+    }
+    return self;
+}
+
 
 @end

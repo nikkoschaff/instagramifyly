@@ -20,10 +20,13 @@
 @synthesize selectedProfilePicture;
 @synthesize photos;
 @synthesize isUsingGridView;
+@synthesize numberOfSections;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.photos = [NSMutableArray new];
+    self.numberOfSections = 3;
     self.isUsingGridView = NO;
     [self.tableView setHidden:NO];
     [self.collectionView setHidden:YES];
@@ -31,7 +34,7 @@
 //    [self.collectionView registerClass:[PhotoCollectionViewCell class] forCellReuseIdentifier:@"PhotoCollectionCell"];
 }
 
--(void)viewDidAppear:(BOOL)animated
+-(void)viewWillAppear:(BOOL)animated
 {
     self.photos = [NSMutableArray new];
     
@@ -44,6 +47,7 @@
     [self.collectionView reloadData];
     [self.numPostsLabel setText:[NSString stringWithFormat:@"%lu",(unsigned long)FilteredImage.imagesDictionary.count]];
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -128,16 +132,11 @@
     return self.photos.count;
 }
 
--(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
-{
-    return 1;
-}
-
 -(UICollectionViewCell*)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CollectionCellIdentifier = @"PhotoCollectionCell";
     
-    PhotoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CollectionCellIdentifier forIndexPath:indexPath];
+    PhotoCollectionViewCell *cell = (PhotoCollectionViewCell*)[collectionView dequeueReusableCellWithReuseIdentifier:CollectionCellIdentifier forIndexPath:indexPath];
     
     if (cell == nil)
     {
@@ -146,17 +145,10 @@
     
     FilteredImage *fimage = [photos objectAtIndex:indexPath.row];
     
-    cell.backgroundColor = [UIColor whiteColor];
-    [cell.imageView removeFromSuperview];
+    cell.backgroundColor = [UIColor blueColor];
     
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:cell.frame];
-    imageView.contentMode = UIViewContentModeScaleToFill;
-    imageView.clipsToBounds = YES;
-    [imageView setUserInteractionEnabled:NO];
-    //imageView.tag = indexPath.row;
-    [imageView setImage:fimage.image];
+    [cell.imageView setImage:fimage.image];
     
-    [cell addSubview:imageView];
     [cell setUserInteractionEnabled:NO];
     return cell;
 }
@@ -165,13 +157,13 @@
 
 // 1
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return CGSizeMake(150, 150);
+    return CGSizeMake((collectionView.frame.size.width/3)-20, (collectionView.frame.size.width/3)-20);
 }
 
-// 3
+//// 3
 - (UIEdgeInsets)collectionView:
 (UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-    return UIEdgeInsetsMake(0, 0, 0, 0);
+    return UIEdgeInsetsMake(10, 10, 10, 10);
 }
 
 #pragma mark General Interaction

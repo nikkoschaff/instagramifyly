@@ -24,6 +24,7 @@
 @property (nonatomic,strong) NSMutableArray *photos;
 @property (nonatomic,strong) UIImage *selectedProfilePicture;
 @property (nonatomic) BOOL isUsingGridView;
+@property (nonatomic) NSInteger numberOfSections;
 
 -(IBAction)editProfileButtonClicked:(id)sender;
 -(IBAction)editTextButtonClicked:(id)sender;

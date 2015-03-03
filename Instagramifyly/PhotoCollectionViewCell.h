@@ -10,6 +10,6 @@
 #import "FilteredImage.h"
 
 @interface PhotoCollectionViewCell : UICollectionViewCell
-@property (nonatomic,weak) IBOutlet UIImageView *imageView;
+@property (nonatomic,strong) UIImageView *imageView;
 @property (nonatomic,strong) FilteredImage *fimage;
 @end
