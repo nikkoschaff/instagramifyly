@@ -31,7 +31,8 @@
     [self.tableView setHidden:NO];
     [self.collectionView setHidden:YES];
     [self.tableView registerClass:[PhotoTableViewCell class] forCellReuseIdentifier:@"PhotoRowCell"];
-//    [self.collectionView registerClass:[PhotoCollectionViewCell class] forCellReuseIdentifier:@"PhotoCollectionCell"];
+    [self.collectionView setBounces:YES];
+    [self.collectionView setAlwaysBounceVertical:YES];
 }
 
 -(void)viewWillAppear:(BOOL)animated
