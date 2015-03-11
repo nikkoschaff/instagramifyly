@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "FilteredImage.h"
 
+@class FilteredImage;
 @interface PhotoCollectionViewCell : UICollectionViewCell
-@property (nonatomic,strong) UIImageView *imageView;
+@property (nonatomic,strong) IBOutlet UIImageView *imageView;
 @property (nonatomic,strong) FilteredImage *fimage;
 @end

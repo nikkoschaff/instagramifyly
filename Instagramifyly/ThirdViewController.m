@@ -27,9 +27,9 @@
     // Do any additional setup after loading the view.
     self.photos = [NSMutableArray new];
     self.numberOfSections = 3;
-    self.isUsingGridView = NO;
-    [self.tableView setHidden:NO];
-    [self.collectionView setHidden:YES];
+    self.isUsingGridView = YES;
+    [self.tableView setHidden:YES];
+    [self.collectionView setHidden:NO];
     [self.tableView registerClass:[PhotoTableViewCell class] forCellReuseIdentifier:@"PhotoRowCell"];
     [self.collectionView setBounces:YES];
     [self.collectionView setAlwaysBounceVertical:YES];
@@ -133,7 +133,7 @@
     return self.photos.count;
 }
 
--(UICollectionViewCell*)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+-(PhotoCollectionViewCell*)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CollectionCellIdentifier = @"PhotoCollectionCell";
     
@@ -146,25 +146,33 @@
     
     FilteredImage *fimage = [photos objectAtIndex:indexPath.row];
     
-    cell.backgroundColor = [UIColor blueColor];
+    //UIImageView *fimageView = (UIImageView*)[cell viewWithTag:5000];
+    //fimageView.image = fimage.image;
     
-    [cell.imageView setImage:fimage.image];
+
+    cell.backgroundColor = [UIColor blueColor];
+    cell.backgroundView = [[UIImageView alloc] initWithImage:fimage.image];
+    NSLog(@"got image: %@",fimage);
+    //cell.fimage = fimage;
+    
+    
+//    [cell.imageView setImage:fimage.image];
     
     [cell setUserInteractionEnabled:NO];
     return cell;
 }
 
-#pragma mark – UICollectionViewDelegateFlowLayout
+#pragma mark – UICollectionViewDelegate
 
 // 1
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return CGSizeMake((collectionView.frame.size.width/3)-20, (collectionView.frame.size.width/3)-20);
+    return CGSizeMake(135,135);
 }
 
 //// 3
 - (UIEdgeInsets)collectionView:
 (UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-    return UIEdgeInsetsMake(10, 10, 10, 10);
+    return UIEdgeInsetsMake(20, 20, 20, 20);
 }
 
 #pragma mark General Interaction

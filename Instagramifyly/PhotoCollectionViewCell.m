@@ -7,6 +7,7 @@
 //
 
 #import "PhotoCollectionViewCell.h"
+#import "FilteredImage.h"
 
 
 @implementation PhotoCollectionViewCell
@@ -19,12 +20,21 @@
     self = [super initWithFrame:frame];
     if (self)
     {
-        self.imageView = [UIImageView new];
-        self.imageView.frame = self.bounds;
-        [self addSubview:self.imageView];
+        self.imageView = [[UIImageView alloc] initWithFrame:self.bounds];
+        [self.imageView setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight];
+        [self.contentView addSubview:self.imageView];
+        self.imageView.tag = 5000;
     }
     return self;
 }
 
+-(void)setPhoto:(FilteredImage*)image
+{
+    if(self.fimage != image)
+    {
+        self.fimage = image;
+    }
+    self.imageView.image = self.fimage.image;
+}
 
 @end
