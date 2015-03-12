@@ -12,7 +12,6 @@
 #import "PhotoCollectionViewCell.h"
 
 @interface ThirdViewController ()
-
 @end
 
 @implementation ThirdViewController
@@ -33,6 +32,10 @@
     [self.tableView registerClass:[PhotoTableViewCell class] forCellReuseIdentifier:@"PhotoRowCell"];
     [self.collectionView setBounces:YES];
     [self.collectionView setAlwaysBounceVertical:YES];
+
+    self.collectionView.bounces = YES;
+    [self.collectionView setShowsHorizontalScrollIndicator:NO];
+    [self.collectionView setShowsVerticalScrollIndicator:NO];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -95,9 +98,83 @@
     return 568;
 }
 
+
+#pragma mark CollectionView
+
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return self.photos.count;
+}
+
+-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+{
+    return 1;
+}
+
+-(PhotoCollectionViewCell*)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CollectionCellIdentifier = @"PhotoCollectionCell";
+    
+    PhotoCollectionViewCell *cell = (PhotoCollectionViewCell*)[collectionView dequeueReusableCellWithReuseIdentifier:CollectionCellIdentifier forIndexPath:indexPath];
+    
+    if (cell == nil)
+    {
+        cell = [PhotoCollectionViewCell new];
+    }
+    
+    FilteredImage *fimage = [photos objectAtIndex:indexPath.row];
+    cell.backgroundColor = [UIColor blueColor];
+    cell.backgroundView = [[UIImageView alloc] initWithImage:fimage.image];
+    
+    [cell setUserInteractionEnabled:NO];
+    return cell;
+}
+
+#pragma mark – UICollectionViewDelegate
+
+// 1
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    return CGSizeMake(155,155);
+}
+
+-(CGFloat)collectionView:(UICollectionView*)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
+{
+    return 2.0;
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
+    return 2.0;
+}
+
+//// 3
+- (UIEdgeInsets)collectionView:
+(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
+    return UIEdgeInsetsMake(0, 0, 0, 0);
+}
+
+#pragma mark General Interaction
+
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    FilteredImage *selectedFilteredImage = [[FilteredImage alloc] initWithCaption:@"Profile Pic" andURL:[info objectForKey:@"UIImagePickerControllerReferenceURL"]];
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        //Here your non-main thread.
+        [NSThread sleepForTimeInterval:0.5f];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            //Here you returns to main thread.
+            self.selectedProfilePicture = selectedFilteredImage.image;
+            [self.profilePicture setImage:self.selectedProfilePicture];
+            [picker dismissViewControllerAnimated:YES completion:^{
+            }];
+            
+        });
+    });
+}
+
 - (BOOL)startMediaBrowserFromViewController: (UIViewController*) controller
-                               usingDelegate: (id <UIImagePickerControllerDelegate,
-                                               UINavigationControllerDelegate>) delegate {
+                              usingDelegate: (id <UIImagePickerControllerDelegate,
+                                              UINavigationControllerDelegate>) delegate {
     
     if (([UIImagePickerController isSourceTypeAvailable:
           UIImagePickerControllerSourceTypeSavedPhotosAlbum] == NO)
@@ -124,75 +201,6 @@
         //TODO
     }];
     return YES;
-}
-
-#pragma mark CollectionView
-
--(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
-{
-    return self.photos.count;
-}
-
--(PhotoCollectionViewCell*)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *CollectionCellIdentifier = @"PhotoCollectionCell";
-    
-    PhotoCollectionViewCell *cell = (PhotoCollectionViewCell*)[collectionView dequeueReusableCellWithReuseIdentifier:CollectionCellIdentifier forIndexPath:indexPath];
-    
-    if (cell == nil)
-    {
-        cell = [PhotoCollectionViewCell new];
-    }
-    
-    FilteredImage *fimage = [photos objectAtIndex:indexPath.row];
-    
-    //UIImageView *fimageView = (UIImageView*)[cell viewWithTag:5000];
-    //fimageView.image = fimage.image;
-    
-
-    cell.backgroundColor = [UIColor blueColor];
-    cell.backgroundView = [[UIImageView alloc] initWithImage:fimage.image];
-    NSLog(@"got image: %@",fimage);
-    //cell.fimage = fimage;
-    
-    
-//    [cell.imageView setImage:fimage.image];
-    
-    [cell setUserInteractionEnabled:NO];
-    return cell;
-}
-
-#pragma mark – UICollectionViewDelegate
-
-// 1
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return CGSizeMake(135,135);
-}
-
-//// 3
-- (UIEdgeInsets)collectionView:
-(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-    return UIEdgeInsetsMake(20, 20, 20, 20);
-}
-
-#pragma mark General Interaction
-
--(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
-{
-    FilteredImage *selectedFilteredImage = [[FilteredImage alloc] initWithCaption:@"Profile Pic" andURL:[info objectForKey:@"UIImagePickerControllerReferenceURL"]];
-    
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        //Here your non-main thread.
-        [NSThread sleepForTimeInterval:0.5f];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            //Here you returns to main thread.
-            self.selectedProfilePicture = selectedFilteredImage.image;
-            [self.profilePicture setImage:self.selectedProfilePicture];
-            [picker dismissViewControllerAnimated:YES completion:^{
-            }];
-            
-        });
-    });
 }
 
 -(IBAction)editProfileButtonClicked:(id)sender
