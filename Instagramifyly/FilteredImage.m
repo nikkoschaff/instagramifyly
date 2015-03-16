@@ -42,12 +42,26 @@
                  resultBlock:^(ALAsset *asset) {
                      ALAssetRepresentation *repr = [asset defaultRepresentation];
                      CGImageRef cgImg = [repr fullResolutionImage];
-                     self.image = [UIImage imageWithCGImage:cgImg];
+                     
+                     UIImage *img = [UIImage imageWithCGImage:cgImg];
+                     [NSThread detachNewThreadSelector:@selector(createImage:) toTarget:self withObject:img];
+   
+                     
                  } failureBlock:^(NSError *error) {
                      NSLog(@"Sorry - couldn't find it");
         }];
     }
     return self;
+}
+
+-(void)createImage:(UIImage*)img
+{
+    CGSize newSize = CGSizeMake(320, 480);
+    UIGraphicsBeginImageContext(newSize);
+    [img drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
+    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+    self.image = newImage;
+    UIGraphicsEndImageContext();
 }
 
 
