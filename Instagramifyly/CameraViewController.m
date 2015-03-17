@@ -184,8 +184,6 @@
         if (imageSampleBuffer) {
             NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageSampleBuffer];
             UIImage *image = [UIImage imageWithData:imageData scale:[UIScreen mainScreen].scale];
-            image = [image imageWithFixedOrientation];
-            image = [image imageResizedToMatchAspectRatioOfSize:self.captureVideoPreviewLayer.bounds.size];
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.delegate cameraViewController:self didCompleteWithImage:image];

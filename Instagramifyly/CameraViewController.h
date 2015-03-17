@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 
 #import <AVFoundation/AVFoundation.h>
-#import "UIImage+ImageUtilities.h"
 #import "CameraToolbar.h"
 
 @class CameraViewController;
