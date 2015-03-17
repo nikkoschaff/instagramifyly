@@ -16,16 +16,16 @@
 @synthesize url;
 @synthesize image;
 
-+(NSMutableDictionary*)imagesDictionary
++(NSMutableArray*)images
 {
-    static NSMutableDictionary *dictionary = nil;
+    static NSMutableArray *array = nil;
     
-    if (dictionary == nil)
+    if (array == nil)
     {
-        dictionary = [NSMutableDictionary new];
+        array = [NSMutableArray new];
     }
     
-    return dictionary;
+    return array;
 }
 
 -(instancetype) initWithCaption:(NSString*)theCaption andURL:(NSURL*)theUrl

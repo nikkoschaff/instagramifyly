@@ -14,7 +14,7 @@
 @property NSURL *url;
 @property UIImage *image;
 
-+(NSMutableDictionary*)imagesDictionary;
++(NSMutableArray*)images;
 
 -(instancetype)initWithCaption:(NSString*)caption andURL:(NSURL*)url;
 

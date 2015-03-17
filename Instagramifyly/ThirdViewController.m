@@ -42,14 +42,13 @@
 {
     self.photos = [NSMutableArray new];
     
-    for (NSString *caption in FilteredImage.imagesDictionary)
+    for (FilteredImage *fimage in FilteredImage.images)
     {
-        FilteredImage *fimage = [FilteredImage.imagesDictionary objectForKey:caption];
         [self.photos addObject:fimage];
     }
     [self.tableView reloadData];
     [self.collectionView reloadData];
-    [self.numPostsLabel setText:[NSString stringWithFormat:@"%lu",(unsigned long)FilteredImage.imagesDictionary.count]];
+    [self.numPostsLabel setText:[NSString stringWithFormat:@"%lu",(unsigned long)FilteredImage.images.count]];
 }
 
 

@@ -29,9 +29,8 @@
 {    
     self.photos = [NSMutableArray new];
     
-    for (NSString *caption in FilteredImage.imagesDictionary)
+    for (FilteredImage *fimage in FilteredImage.images)
     {
-        FilteredImage *fimage = [FilteredImage.imagesDictionary objectForKey:caption];
         [self.photos addObject:fimage];
     }
         
