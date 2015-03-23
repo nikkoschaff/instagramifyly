@@ -18,15 +18,11 @@
 
 @synthesize selectedProfilePicture;
 @synthesize photos;
-@synthesize isUsingGridView;
-@synthesize numberOfSections;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.photos = [NSMutableArray new];
-    self.numberOfSections = 3;
-    self.isUsingGridView = YES;
     [self.tableView setHidden:YES];
     [self.collectionView setHidden:NO];
     [self.tableView registerClass:[PhotoTableViewCell class] forCellReuseIdentifier:@"PhotoRowCell"];
@@ -132,7 +128,6 @@
 
 #pragma mark – UICollectionViewDelegate
 
-// 1
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     return CGSizeMake(155,155);
 }
@@ -146,7 +141,6 @@
     return 2.0;
 }
 
-//// 3
 - (UIEdgeInsets)collectionView:
 (UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
     return UIEdgeInsetsMake(0, 0, 0, 0);
@@ -198,7 +192,11 @@
     mediaUI.delegate = delegate;
     
     [controller presentViewController:mediaUI animated:YES completion:^{
-        //TODO
+        self.profilePicture.layer.backgroundColor=[[UIColor clearColor] CGColor];
+        self.profilePicture.layer.cornerRadius=40;
+        self.profilePicture.layer.borderWidth=1.0;
+        self.profilePicture.layer.masksToBounds = YES;
+        self.profilePicture.layer.borderColor=[[UIColor blackColor] CGColor];
     }];
     return YES;
 }
@@ -228,7 +226,6 @@
 -(IBAction)gridButtonClicked:(id)sender
 {
     NSLog(@"Grid button clicked");
-    self.isUsingGridView = YES;
     [self.tableView setHidden:YES];
     [self.collectionView setHidden:NO];
 }
@@ -237,19 +234,9 @@
 -(IBAction)listButtonClicked:(id)sender
 {
     NSLog(@"List button clicked");
-    self.isUsingGridView = NO;
     [self.tableView setHidden:NO];
     [self.collectionView setHidden:YES];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

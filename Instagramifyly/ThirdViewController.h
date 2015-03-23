@@ -20,11 +20,8 @@
 @property (nonatomic,weak) IBOutlet UIButton *gridButton;
 @property (nonatomic,weak) IBOutlet UIButton *listButton;
 
-
 @property (nonatomic,strong) NSMutableArray *photos;
 @property (nonatomic,strong) UIImage *selectedProfilePicture;
-@property (nonatomic) BOOL isUsingGridView;
-@property (nonatomic) NSInteger numberOfSections;
 
 -(IBAction)editProfileButtonClicked:(id)sender;
 -(IBAction)editTextButtonClicked:(id)sender;

@@ -6,6 +6,9 @@
 //  Copyright (c) 2014 Nikko Mitrano Schaff. All rights reserved.
 //
 
+#define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
+
+
 #import "AppDelegate.h"
 
 @interface AppDelegate ()
@@ -17,6 +20,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+//    
+//    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0"))
+//    {
+//        UIView *view=[[UIView alloc] initWithFrame:CGRectMake(0, 0,320, 20)];
+//        view.backgroundColor=[UIColor colorWithRed:56 green:92 blue:129 alpha:1];
+//        [self.window.rootViewController.view addSubview:view];
+//    }
+    
     return YES;
 }
 
