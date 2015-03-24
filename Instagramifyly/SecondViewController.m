@@ -34,6 +34,7 @@
         cameraVC.delegate = self;
         UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:cameraVC];
         [self presentViewController:nav animated:YES completion:nil];
+        //[self.navigationController dismissViewControllerAnimated:YES completion:nil];
     }
     self.isNewImage = YES;
 }
