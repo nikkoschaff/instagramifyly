@@ -61,6 +61,7 @@
                     <tabBarItem key="tabBarItem" title="" image="profile" id="acW-dT-cKf"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="navBar" destination="vPI-QQ-uAR" id="vM7-db-hh4"/>
                         <outlet property="tableView" destination="svp-Yw-SSF" id="KMr-0x-vOY"/>
                     </connections>
                 </viewController>

@@ -12,6 +12,8 @@
 @interface FirstViewController : UIViewController <UITableViewDelegate,UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) IBOutlet UINavigationBar *navBar;
+@property (strong, nonatomic) IBOutlet UINavigationItem *navTitle;
 
 @property (nonatomic,strong) NSMutableArray *photos;
 

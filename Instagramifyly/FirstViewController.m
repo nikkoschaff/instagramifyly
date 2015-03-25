@@ -22,24 +22,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    [self.navigationController.navigationBar setHidden:NO];
     [self.tableView registerClass:[PhotoTableViewCell class] forCellReuseIdentifier:@"PhotoRowCell"];
 }
 
 -(void)viewWillAppear:(BOOL)animated
-{    //385C81
-    // Navbar color and text
-    // Photo button color
-    // Home button color
-    // Home button icon
-    // camera icon
-    // profile icon
-    // Filter/Camera view colors
-    // Filter/Camera view icons
-    // Profile rounded image
-    // Profile colors
-    // Home colors (tableview)
-    //
+{
     self.photos = [NSMutableArray new];
     
     for (FilteredImage *fimage in FilteredImage.images)
