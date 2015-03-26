@@ -48,7 +48,7 @@
    
                      
                  } failureBlock:^(NSError *error) {
-                     NSLog(@"Sorry - couldn't find it");
+                     NSLog(@"Sorry - couldn't find image in memory");
         }];
     }
     return self;

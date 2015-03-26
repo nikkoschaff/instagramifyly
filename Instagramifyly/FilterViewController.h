@@ -12,7 +12,7 @@
 
 @interface FilterViewController : UIViewController <UICollectionViewDataSource,UICollectionViewDelegate,UIAlertViewDelegate>
 
--(instancetype) initWithImage:(UIImage*)sourceImage;
+-(instancetype)initWithImage:(UIImage*)sourceImage;
 
 @property (nonatomic, strong) UIImage *sourceImage;
 @property (nonatomic, strong) UIImageView *previewImageView;

@@ -16,16 +16,19 @@
 
 @implementation FilterViewController 
 
-- (void)viewDidLoad {
+-(void)viewDidLoad
+{
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
     [self.view addSubview:self.previewImageView];
     [self.view addSubview:self.filterCollectionView];
     
-    if (CGRectGetHeight(self.view.frame) > 500) {
+    if (CGRectGetHeight(self.view.frame) > 500)
+    {
         [self.view addSubview:self.saveButton];
-    } else {
+    } else
+    {
         self.navigationItem.rightBarButtonItem = self.saveBarButton;
     }
     
@@ -36,28 +39,34 @@
     
     self.navigationItem.title = NSLocalizedString(@"Apply Filter", @"apply filter view title");
     
-    if ([self respondsToSelector:@selector(setNeedsStatusBarAppearanceUpdate)]) {
+    if ([self respondsToSelector:@selector(setNeedsStatusBarAppearanceUpdate)])
+    {
         // iOS 7
         [self performSelector:@selector(setNeedsStatusBarAppearanceUpdate)];
-    } else {
+    } else
+    {
         // iOS 6
         [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
     }
 }
 
-- (BOOL)prefersStatusBarHidden {
+-(BOOL)prefersStatusBarHidden
+{
     return YES;
 }
 
-- (void)didReceiveMemoryWarning {
+-(void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-- (instancetype) initWithImage:(UIImage *)sourceImage {
+-(instancetype)initWithImage:(UIImage *)sourceImage
+{
     self = [super init];
     
-    if (self) {
+    if (self)
+    {
         self.sourceImage = sourceImage;
         self.previewImageView = [[UIImageView alloc] initWithImage:self.sourceImage];
         
@@ -75,15 +84,15 @@
         self.filterCollectionView.showsHorizontalScrollIndicator = NO;
         
         self.filterImages = [NSMutableArray arrayWithObject:sourceImage];
-        self.filterTitles = [NSMutableArray arrayWithObject:NSLocalizedString(@"None", @"Label for when no filter is applied to a photo")];
+        self.filterTitles = [NSMutableArray arrayWithObject:NSLocalizedString(@"None", @"No filter label")];
         
         self.saveButton = [UIButton buttonWithType:UIButtonTypeSystem];
-        self.saveButton.backgroundColor = [UIColor colorWithRed:0.345 green:0.318 blue:0.424 alpha:1]; /*#58516c*/
+        self.saveButton.backgroundColor = [UIColor blackColor];
         self.saveButton.layer.cornerRadius = 5;
         [self.saveButton setAttributedTitle:[self saveAttributedString] forState:UIControlStateNormal];
         [self.saveButton addTarget:self action:@selector(saveButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
         
-        self.saveBarButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Send", @"Send button") style:UIBarButtonItemStyleDone target:self action:@selector(saveButtonPressed:)];
+        self.saveBarButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Save", @"Save button") style:UIBarButtonItemStyleDone target:self action:@selector(saveButtonPressed:)];
         
         [self addFiltersToQueue];
     }
@@ -91,7 +100,8 @@
     return self;
 }
 
-- (NSAttributedString *) saveAttributedString {
+-(NSAttributedString *)saveAttributedString
+{
     NSString *baseString = NSLocalizedString(@"Save Image", @"Save image button text");
     NSRange range = [baseString rangeOfString:baseString];
     
@@ -99,12 +109,13 @@
     
     [commentString addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"HelveticaNeue-Bold" size:13] range:range];
     [commentString addAttribute:NSKernAttributeName value:@1.3 range:range];
-    [commentString addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:0.933 green:0.933 blue:0.933 alpha:1] range:range];
+    [commentString addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:range];
     
     return commentString;
 }
 
-- (void)viewWillLayoutSubviews {
+-(void)viewWillLayoutSubviews
+{
     [super viewWillLayoutSubviews];
     
     CGFloat edgeSize = MIN(CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame));
@@ -117,11 +128,13 @@
     CGFloat filterViewYOrigin = CGRectGetMaxY(self.previewImageView.frame) + buffer;
     CGFloat filterViewHeight;
     
-    if (CGRectGetHeight(self.view.frame) > 500) {
+    if (CGRectGetHeight(self.view.frame) > 500)
+    {
         self.saveButton.frame = CGRectMake(buffer, CGRectGetHeight(self.view.frame) - buffer - buttonHeight, CGRectGetWidth(self.view.frame) - 2 * buffer, buttonHeight);
         
         filterViewHeight = CGRectGetHeight(self.view.frame) - filterViewYOrigin - buffer - buffer - CGRectGetHeight(self.saveButton.frame);
-    } else {
+    } else
+    {
         filterViewHeight = CGRectGetHeight(self.view.frame) - CGRectGetMaxY(self.previewImageView.frame) - buffer - buffer;
     }
     
@@ -133,15 +146,18 @@
 
 #pragma mark CollectionView
 
-- (NSInteger) numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+{
     return 1;
 }
 
-- (NSInteger) collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
     return self.filterImages.count;
 }
 
-- (UICollectionViewCell*) collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+-(UICollectionViewCell*)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
     
     static NSInteger imageViewTag = 1000;
@@ -153,7 +169,8 @@
     UICollectionViewFlowLayout *flowLayout = (UICollectionViewFlowLayout *)self.filterCollectionView.collectionViewLayout;
     CGFloat thumbnailEdgeSize = flowLayout.itemSize.width;
     
-    if (!thumbnail) {
+    if (!thumbnail)
+    {
         thumbnail = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, thumbnailEdgeSize, thumbnailEdgeSize)];
         thumbnail.contentMode = UIViewContentModeScaleAspectFill;
         thumbnail.tag = imageViewTag;
@@ -162,7 +179,8 @@
         [cell.contentView addSubview:thumbnail];
     }
     
-    if (!label) {
+    if (!label)
+    {
         label = [[UILabel alloc] initWithFrame:CGRectMake(0, thumbnailEdgeSize, thumbnailEdgeSize, 20)];
         label.tag = labelTag;
         label.textAlignment = NSTextAlignmentCenter;
@@ -176,17 +194,19 @@
     return cell;
 }
 
-- (void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
     self.previewImageView.image = self.filterImages[indexPath.row];
 }
 
-- (void) addFiltersToQueue {
+-(void)addFiltersToQueue
+{
     CIImage *sourceCIImage = [CIImage imageWithCGImage:self.sourceImage.CGImage];
     
     [self.photoFilterOperationQueue addOperationWithBlock:^{
         CIFilter *noirFilter = [CIFilter filterWithName:@"CIPhotoEffectNoir"];
-        
-        if (noirFilter) {
+        if (noirFilter)
+        {
             [noirFilter setValue:sourceCIImage forKey:kCIInputImageKey];
             [self addCIImageToCollectionView:noirFilter.outputImage withFilterTitle:NSLocalizedString(@"Noir", @"Noir Filter")];
         }
@@ -194,8 +214,8 @@
     
     [self.photoFilterOperationQueue addOperationWithBlock:^{
         CIFilter *boomFilter = [CIFilter filterWithName:@"CIPhotoEffectProcess"];
-        
-        if (boomFilter) {
+        if (boomFilter)
+        {
             [boomFilter setValue:sourceCIImage forKey:kCIInputImageKey];
             [self addCIImageToCollectionView:boomFilter.outputImage withFilterTitle:NSLocalizedString(@"Boom", @"Boom Filter")];
         }
@@ -203,8 +223,8 @@
     
     [self.photoFilterOperationQueue addOperationWithBlock:^{
         CIFilter *warmFilter = [CIFilter filterWithName:@"CIPhotoEffectTransfer"];
-        
-        if (warmFilter) {
+        if (warmFilter)
+        {
             [warmFilter setValue:sourceCIImage forKey:kCIInputImageKey];
             [self addCIImageToCollectionView:warmFilter.outputImage withFilterTitle:NSLocalizedString(@"Warm", @"Warm Filter")];
         }
@@ -212,8 +232,8 @@
     
     [self.photoFilterOperationQueue addOperationWithBlock:^{
         CIFilter *pixelFilter = [CIFilter filterWithName:@"CIPixellate"];
-        
-        if (pixelFilter) {
+        if (pixelFilter)
+        {
             [pixelFilter setValue:sourceCIImage forKey:kCIInputImageKey];
             [self addCIImageToCollectionView:pixelFilter.outputImage withFilterTitle:NSLocalizedString(@"Pixel", @"Pixel Filter")];
         }
@@ -221,18 +241,20 @@
         
     [self.photoFilterOperationQueue addOperationWithBlock:^{
         CIFilter *moodyFilter = [CIFilter filterWithName:@"CISRGBToneCurveToLinear"];
-        
-        if (moodyFilter) {
+        if (moodyFilter)
+        {
             [moodyFilter setValue:sourceCIImage forKey:kCIInputImageKey];
             [self addCIImageToCollectionView:moodyFilter.outputImage withFilterTitle:NSLocalizedString(@"Moody", @"Moody Filter")];
         }
     }];
 }
 
-- (void) addCIImageToCollectionView:(CIImage *)CIImage withFilterTitle:(NSString *)filterTitle {
+- (void) addCIImageToCollectionView:(CIImage *)CIImage withFilterTitle:(NSString *)filterTitle
+{
     UIImage *image = [UIImage imageWithCIImage:CIImage scale:self.sourceImage.scale orientation:self.sourceImage.imageOrientation];
     
-    if (image) {
+    if (image)
+    {
         UIGraphicsBeginImageContextWithOptions(image.size, NO, image.scale);
         [image drawAtPoint:CGPointZero];
         image = UIGraphicsGetImageFromCurrentImageContext();
@@ -251,8 +273,9 @@
 
 #pragma mark Saving Image
 
-- (void)saveButtonPressed:(id)sender {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Caption" message:NSLocalizedString(@"Add a caption.", @"send image instructions") delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", @"cancel button") otherButtonTitles:NSLocalizedString(@"Send", @"Send button"), nil];
+-(void)saveButtonPressed:(id)sender
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Caption" message:NSLocalizedString(@"Add a caption.", @"send image instructions") delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", @"cancel button") otherButtonTitles:NSLocalizedString(@"Save", @"Save button"), nil];
     alert.alertViewStyle = UIAlertViewStylePlainTextInput;
     
     UITextField *textField = [alert textFieldAtIndex:0];
@@ -261,17 +284,22 @@
     [alert show];
 }
 
-- (void) alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+-(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
     if (buttonIndex != alertView.cancelButtonIndex) {
         
         self.caption = [alertView textFieldAtIndex:0].text;
         
         ALAssetsLibrary *library = [ALAssetsLibrary new];
         
-        [library writeImageToSavedPhotosAlbum:[self.previewImageView.image CGImage] orientation:(ALAssetOrientation)[self.previewImageView.image imageOrientation] completionBlock:^(NSURL *assetURL, NSError *error) {
-            if (error) {
+        [library writeImageToSavedPhotosAlbum:[self.previewImageView.image CGImage] orientation:(ALAssetOrientation)[self.previewImageView.image imageOrientation] completionBlock:^(NSURL *assetURL, NSError *error)
+        {
+            if (error)
+            {
                 NSLog(@"error");
-            } else {
+            }
+            else
+            {
                 
                 FilteredImage *filteredImage = [[FilteredImage alloc] initWithCaption:self.caption andURL:assetURL];
                 [FilteredImage.images addObject:filteredImage];

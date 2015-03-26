@@ -11,23 +11,21 @@
 @class CameraToolbar;
 
 @protocol CameraToolbarDelegate <NSObject>
-
-- (void) leftButtonPressedOnToolbar:(CameraToolbar *)toolbar;
-- (void) rightButtonPressedOnToolbar:(CameraToolbar *)toolbar;
-- (void) cameraButtonPressedOnToolbar:(CameraToolbar *)toolbar;
-
+-(void)swapCameraButtonPressedOnToolbar:(CameraToolbar *)toolbar;
+-(void)cameraButtonPressedOnToolbar:(CameraToolbar *)toolbar;
+-(void)photoLibraryButtonPressedOnToolbar:(CameraToolbar *)toolbar;
 @end
 
 @interface CameraToolbar : UIView
 
-- (instancetype) initWithImageNames:(NSArray *)imageNames;
+-(instancetype)initWithImageNames:(NSArray *)imageNames;
 
 @property (nonatomic, weak) NSObject <CameraToolbarDelegate> *delegate;
 
-@property (nonatomic, strong) UIButton *leftButton;
+@property (nonatomic, strong) UIButton *swapCameraButton;
 @property (nonatomic, strong) UIButton *cameraButton;
-@property (nonatomic, strong) UIButton *rightButton;
+@property (nonatomic, strong) UIButton *photoLibraryButton;
 
-@property (nonatomic, strong) UIView *whiteView;
+@property (nonatomic, strong) UIView *blackOverlay;
 
 @end

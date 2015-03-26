@@ -10,20 +10,24 @@
 
 @implementation PhotoTableViewCell
 
-- (void)awakeFromNib {
+-(void)awakeFromNib
+{
     // Initialization code
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+-(void)setSelected:(BOOL)selected animated:(BOOL)animated
+{
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
 }
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
+-(id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     
-    if (self) {
+    if (self)
+    {
         // Helpers
         CGSize size = self.contentView.frame.size;
         // Initialize Main Label
@@ -35,12 +39,10 @@
         [self.caption setTextColor:[UIColor orangeColor]];
         [self.caption setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];
 
-        
         // Add Main Label to Content View
         [self.contentView addSubview:self.caption];
         self.imageView.image = self.image;
         [self.contentView addSubview:self.imageView];
-        
     }
     
     return self;
