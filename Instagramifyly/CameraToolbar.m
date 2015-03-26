@@ -11,7 +11,7 @@
 @implementation CameraToolbar
 
 
--(instancetype)initWithImageNames:(NSArray *)imageNames
+-(instancetype)init
 {
     self = [super init];
     
@@ -19,7 +19,7 @@
     {
         self.swapCameraButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [self.swapCameraButton addTarget:self action:@selector(swapCameraButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-        [self.swapCameraButton setImage:[UIImage imageNamed:imageNames.firstObject] forState:UIControlStateNormal];
+        [self.swapCameraButton setImage:[UIImage imageNamed:@"rotate"]  forState:UIControlStateNormal];
         
         self.cameraButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [self.cameraButton addTarget:self action:@selector(cameraButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
@@ -27,7 +27,7 @@
         
         self.photoLibraryButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [self.photoLibraryButton addTarget:self action:@selector(photoLibraryButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-        [self.photoLibraryButton setImage:[UIImage imageNamed:imageNames.lastObject] forState:UIControlStateNormal];
+        [self.photoLibraryButton setImage:[UIImage imageNamed:@"sample"]  forState:UIControlStateNormal];
         
         self.blackOverlay = [UIView new];
         self.blackOverlay.backgroundColor = [UIColor blackColor];

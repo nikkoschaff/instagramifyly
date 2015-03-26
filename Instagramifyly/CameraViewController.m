@@ -58,7 +58,7 @@
 {
     // Initialize subviews programatically
     self.imagePreview = [UIView new];
-    self.cameraToolbar = [[CameraToolbar alloc] initWithImageNames:@[@"rotate", @"sample"]];
+    self.cameraToolbar = [[CameraToolbar alloc] init];
     self.cameraToolbar.delegate = self;
     
     // Add subviews to main view
@@ -87,7 +87,7 @@
                 AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:device error:&error];
                 if (!input)
                 {
-                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:error.localizedDescription message:error.localizedRecoverySuggestion delegate:self cancelButtonTitle:NSLocalizedString(@"OK", @"OK button") otherButtonTitles:nil];
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:error.localizedDescription message:error.localizedRecoverySuggestion delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
                     [alert show];
                 } else
                 {
@@ -102,10 +102,10 @@
             }
             else
             {
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Camera Permission Denied", @"camera permission denied title")
-                                                                message:NSLocalizedString(@"To give this app permission to use the camera, update your privacy settings", @"camera permission denied recovery suggestion")
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Camera permission denied"
+                                                                message:@"To give this app permission to use the camera, update your privacy settings"
                                                                delegate:self
-                                                      cancelButtonTitle:NSLocalizedString(@"OK", @"OK button")
+                                                      cancelButtonTitle:@"OK"
                                                       otherButtonTitles:nil];
                 [alert show];
             }
@@ -205,7 +205,7 @@
         else
         {
             dispatch_async(dispatch_get_main_queue(), ^{
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:error.localizedDescription message:error.localizedRecoverySuggestion delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"OK button") otherButtonTitles:nil];
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:error.localizedDescription message:error.localizedRecoverySuggestion delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
                 [alert show];
             });
             

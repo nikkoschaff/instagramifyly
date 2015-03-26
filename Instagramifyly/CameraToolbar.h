@@ -18,7 +18,7 @@
 
 @interface CameraToolbar : UIView
 
--(instancetype)initWithImageNames:(NSArray *)imageNames;
+-(instancetype)init;
 
 @property (nonatomic, weak) NSObject <CameraToolbarDelegate> *delegate;
 

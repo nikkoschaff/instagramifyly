@@ -37,7 +37,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     self.filterCollectionView.backgroundColor = [UIColor whiteColor];
     
-    self.navigationItem.title = NSLocalizedString(@"Apply Filter", @"apply filter view title");
+    self.navigationItem.title = @"Apply Filter";
     
     if ([self respondsToSelector:@selector(setNeedsStatusBarAppearanceUpdate)])
     {
@@ -84,7 +84,7 @@
         self.filterCollectionView.showsHorizontalScrollIndicator = NO;
         
         self.filterImages = [NSMutableArray arrayWithObject:sourceImage];
-        self.filterTitles = [NSMutableArray arrayWithObject:NSLocalizedString(@"None", @"No filter label")];
+        self.filterTitles = [NSMutableArray arrayWithObject:@"None"];
         
         self.saveButton = [UIButton buttonWithType:UIButtonTypeSystem];
         self.saveButton.backgroundColor = [UIColor blackColor];
@@ -92,7 +92,7 @@
         [self.saveButton setAttributedTitle:[self saveAttributedString] forState:UIControlStateNormal];
         [self.saveButton addTarget:self action:@selector(saveButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
         
-        self.saveBarButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Save", @"Save button") style:UIBarButtonItemStyleDone target:self action:@selector(saveButtonPressed:)];
+        self.saveBarButton = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStyleDone target:self action:@selector(saveButtonPressed:)];
         
         [self addFiltersToQueue];
     }
@@ -102,7 +102,7 @@
 
 -(NSAttributedString *)saveAttributedString
 {
-    NSString *baseString = NSLocalizedString(@"Save Image", @"Save image button text");
+    NSString *baseString = @"Save Image";
     NSRange range = [baseString rangeOfString:baseString];
     
     NSMutableAttributedString *commentString = [[NSMutableAttributedString alloc] initWithString:baseString];
@@ -208,25 +208,25 @@
         if (noirFilter)
         {
             [noirFilter setValue:sourceCIImage forKey:kCIInputImageKey];
-            [self addCIImageToCollectionView:noirFilter.outputImage withFilterTitle:NSLocalizedString(@"Noir", @"Noir Filter")];
+            [self addCIImageToCollectionView:noirFilter.outputImage withFilterTitle:@"Noir"];
         }
     }];
     
     [self.photoFilterOperationQueue addOperationWithBlock:^{
-        CIFilter *boomFilter = [CIFilter filterWithName:@"CIPhotoEffectProcess"];
-        if (boomFilter)
+        CIFilter *vintageCoolFilter = [CIFilter filterWithName:@"CIPhotoEffectProcess"];
+        if (vintageCoolFilter)
         {
-            [boomFilter setValue:sourceCIImage forKey:kCIInputImageKey];
-            [self addCIImageToCollectionView:boomFilter.outputImage withFilterTitle:NSLocalizedString(@"Boom", @"Boom Filter")];
+            [vintageCoolFilter setValue:sourceCIImage forKey:kCIInputImageKey];
+            [self addCIImageToCollectionView:vintageCoolFilter.outputImage withFilterTitle:@"Cool"];
         }
     }];
     
     [self.photoFilterOperationQueue addOperationWithBlock:^{
-        CIFilter *warmFilter = [CIFilter filterWithName:@"CIPhotoEffectTransfer"];
-        if (warmFilter)
+        CIFilter *vintageWarmFilter = [CIFilter filterWithName:@"CIPhotoEffectTransfer"];
+        if (vintageWarmFilter)
         {
-            [warmFilter setValue:sourceCIImage forKey:kCIInputImageKey];
-            [self addCIImageToCollectionView:warmFilter.outputImage withFilterTitle:NSLocalizedString(@"Warm", @"Warm Filter")];
+            [vintageWarmFilter setValue:sourceCIImage forKey:kCIInputImageKey];
+            [self addCIImageToCollectionView:vintageWarmFilter.outputImage withFilterTitle:@"Warm"];
         }
     }];
     
@@ -235,16 +235,7 @@
         if (pixelFilter)
         {
             [pixelFilter setValue:sourceCIImage forKey:kCIInputImageKey];
-            [self addCIImageToCollectionView:pixelFilter.outputImage withFilterTitle:NSLocalizedString(@"Pixel", @"Pixel Filter")];
-        }
-    }];
-        
-    [self.photoFilterOperationQueue addOperationWithBlock:^{
-        CIFilter *moodyFilter = [CIFilter filterWithName:@"CISRGBToneCurveToLinear"];
-        if (moodyFilter)
-        {
-            [moodyFilter setValue:sourceCIImage forKey:kCIInputImageKey];
-            [self addCIImageToCollectionView:moodyFilter.outputImage withFilterTitle:NSLocalizedString(@"Moody", @"Moody Filter")];
+            [self addCIImageToCollectionView:pixelFilter.outputImage withFilterTitle:@"Pixel"];
         }
     }];
 }
@@ -275,11 +266,11 @@
 
 -(void)saveButtonPressed:(id)sender
 {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Caption" message:NSLocalizedString(@"Add a caption.", @"send image instructions") delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", @"cancel button") otherButtonTitles:NSLocalizedString(@"Save", @"Save button"), nil];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Caption" message:@"Add a caption." delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Save", nil];
     alert.alertViewStyle = UIAlertViewStylePlainTextInput;
     
     UITextField *textField = [alert textFieldAtIndex:0];
-    textField.placeholder = NSLocalizedString(@"Caption", @"Caption");
+    textField.placeholder = @"Caption";
     
     [alert show];
 }
