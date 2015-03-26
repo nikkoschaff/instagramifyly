@@ -24,26 +24,12 @@
 {
     if (self.isNewImage)
     {
-        if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera] ||
-            [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeSavedPhotosAlbum]) {
-            UIBarButtonItem *cameraButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCamera target:self action:@selector(cameraPressed:)];
-            self.navigationItem.rightBarButtonItem = cameraButton;
-        }
-        
         CameraViewController *cameraVC = [[CameraViewController alloc] init];
         cameraVC.delegate = self;
         UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:cameraVC];
         [self presentViewController:nav animated:YES completion:nil];
     }
     self.isNewImage = YES;
-}
-
-- (void) cameraPressed:(UIBarButtonItem *) sender {
-    CameraViewController *cameraVC = [[CameraViewController alloc] init];
-    cameraVC.delegate = self;
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:cameraVC];
-    [self presentViewController:nav animated:YES completion:nil];
-    return;
 }
 
 - (void) cameraViewController:(CameraViewController *)cameraViewController didCompleteWithImage:(UIImage *)image {
