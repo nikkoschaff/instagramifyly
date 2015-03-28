@@ -34,10 +34,10 @@
     
     [self.filterCollectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
     
-    self.view.backgroundColor = [UIColor whiteColor];
-    self.filterCollectionView.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = [UIColor blackColor];
+    self.filterCollectionView.backgroundColor = [UIColor blackColor];
     
-    self.navigationItem.title = @"Apply Filter";
+    self.navigationItem.title = @"Filter";
     
     if ([self respondsToSelector:@selector(setNeedsStatusBarAppearanceUpdate)])
     {
@@ -87,7 +87,7 @@
         self.filterTitles = [NSMutableArray arrayWithObject:@"None"];
         
         self.saveButton = [UIButton buttonWithType:UIButtonTypeSystem];
-        self.saveButton.backgroundColor = [UIColor blackColor];
+        self.saveButton.backgroundColor = [UIColor whiteColor];
         self.saveButton.layer.cornerRadius = 5;
         [self.saveButton setAttributedTitle:[self saveAttributedString] forState:UIControlStateNormal];
         [self.saveButton addTarget:self action:@selector(saveButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
@@ -102,14 +102,14 @@
 
 -(NSAttributedString *)saveAttributedString
 {
-    NSString *baseString = @"Save Image";
+    NSString *baseString = @"Save";
     NSRange range = [baseString rangeOfString:baseString];
     
     NSMutableAttributedString *commentString = [[NSMutableAttributedString alloc] initWithString:baseString];
     
-    [commentString addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"HelveticaNeue-Bold" size:13] range:range];
+    [commentString addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"Futura" size:24] range:range];
     [commentString addAttribute:NSKernAttributeName value:@1.3 range:range];
-    [commentString addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:range];
+    [commentString addAttribute:NSForegroundColorAttributeName value:[UIColor blackColor] range:range];
     
     return commentString;
 }
@@ -266,7 +266,7 @@
 
 -(void)saveButtonPressed:(id)sender
 {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Caption" message:@"Add a caption." delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Save", nil];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"What happened here?" message:@"Add a caption." delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Save", nil];
     alert.alertViewStyle = UIAlertViewStylePlainTextInput;
     
     UITextField *textField = [alert textFieldAtIndex:0];
