@@ -19,20 +19,20 @@
     {
         self.swapCameraButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [self.swapCameraButton addTarget:self action:@selector(swapCameraButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-        [self.swapCameraButton setImage:[UIImage imageNamed:@"rotate"]  forState:UIControlStateNormal];
+        [self.swapCameraButton setImage:[UIImage imageNamed:@"flippy2"]  forState:UIControlStateNormal];
         
         self.cameraButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [self.cameraButton addTarget:self action:@selector(cameraButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-        [self.cameraButton setImage:[UIImage imageNamed:@"camera"] forState:UIControlStateNormal];
+        [self.cameraButton setImage:[UIImage imageNamed:@"takephoto"] forState:UIControlStateNormal];
         
         self.photoLibraryButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [self.photoLibraryButton addTarget:self action:@selector(photoLibraryButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-        [self.photoLibraryButton setImage:[UIImage imageNamed:@"sample"]  forState:UIControlStateNormal];
+        [self.photoLibraryButton setImage:[UIImage imageNamed:@"camera"]  forState:UIControlStateNormal];
         
-        self.blackOverlay = [UIView new];
-        self.blackOverlay.backgroundColor = [UIColor blackColor];
+        self.blackround = [UIView new];
+        self.blackround.backgroundColor = [UIColor blackColor];
         
-        for (UIView *view in @[self.blackOverlay, self.swapCameraButton, self.cameraButton, self.photoLibraryButton])
+        for (UIView *view in @[self.blackround, self.swapCameraButton, self.cameraButton, self.photoLibraryButton])
         {
             [self addSubview:view];
         }
@@ -45,16 +45,16 @@
 {
     [super layoutSubviews];
     
-    CGRect blackFrame = self.bounds;
-    blackFrame.origin.y += 10;
-    self.blackOverlay.frame = blackFrame;
+    CGRect blackgroundFrame = self.bounds;
+    blackgroundFrame.origin.y += 10;
+    self.blackround.frame = blackgroundFrame;
     
     CGFloat buttonWidth = CGRectGetWidth(self.bounds) / 3;
     
     NSArray *buttons = @[self.swapCameraButton, self.cameraButton, self.photoLibraryButton];
     for (int i = 0; i < 3; i++) {
         UIButton *button = buttons[i];
-        button.frame = CGRectMake(i * buttonWidth, 10, buttonWidth, CGRectGetHeight(blackFrame));
+        button.frame = CGRectMake(i * buttonWidth, 10, buttonWidth, CGRectGetHeight(blackgroundFrame));
     }
 }
 

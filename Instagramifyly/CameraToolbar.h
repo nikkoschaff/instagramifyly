@@ -26,6 +26,6 @@
 @property (nonatomic, strong) UIButton *cameraButton;
 @property (nonatomic, strong) UIButton *photoLibraryButton;
 
-@property (nonatomic, strong) UIView *blackOverlay;
+@property (nonatomic, strong) UIView *blackround;
 
 @end

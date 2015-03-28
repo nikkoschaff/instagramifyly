@@ -50,7 +50,7 @@
     self.imagePreview.frame = self.view.bounds;
     self.captureVideoPreviewLayer.frame = self.imagePreview.bounds;
     
-    CGFloat cameraToolbarHeight = 200;
+    CGFloat cameraToolbarHeight = 150;
     self.cameraToolbar.frame = CGRectMake(0, CGRectGetHeight(self.view.bounds) - cameraToolbarHeight, width, cameraToolbarHeight);
 }
 
@@ -72,12 +72,10 @@
     // Setup image capture
     self.session = [[AVCaptureSession alloc] init];
     self.session.sessionPreset = AVCaptureSessionPresetHigh;
-    
     self.captureVideoPreviewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:self.session];
     self.captureVideoPreviewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
     self.captureVideoPreviewLayer.masksToBounds = YES;
     [self.imagePreview.layer addSublayer:self.captureVideoPreviewLayer];
-    
     [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
         dispatch_async(dispatch_get_main_queue(), ^{
             if (granted)
@@ -94,9 +92,7 @@
                     [self.session addInput:input];
                     self.stillImageOutput = [[AVCaptureStillImageOutput alloc] init];
                     self.stillImageOutput.outputSettings = @{AVVideoCodecKey: AVVideoCodecJPEG};
-                    
                     [self.session addOutput:self.stillImageOutput];
-                    
                     [self.session startRunning];
                 }
             }
@@ -132,7 +128,6 @@
 {
     // Flip between front and back camera
     AVCaptureDeviceInput *currentCameraInput = self.session.inputs.firstObject;
-    
     NSArray *devices = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
     
     if (devices.count > 1)
@@ -148,16 +143,15 @@
         AVCaptureDevice *newCamera = devices[newIndex];
         AVCaptureDeviceInput *newVideoInput = [[AVCaptureDeviceInput alloc] initWithDevice:newCamera error:nil];
         
-        if (newVideoInput) {
+        if (newVideoInput)
+        {
             UIView *fakeView = [self.imagePreview snapshotViewAfterScreenUpdates:YES];
             fakeView.frame = self.imagePreview.frame;
             [self.view insertSubview:fakeView aboveSubview:self.imagePreview];
-            
             [self.session beginConfiguration];
             [self.session removeInput:currentCameraInput];
             [self.session addInput:newVideoInput];
             [self.session commitConfiguration];
-            
             [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
                 fakeView.alpha = 0;
             } completion:^(BOOL finished)
