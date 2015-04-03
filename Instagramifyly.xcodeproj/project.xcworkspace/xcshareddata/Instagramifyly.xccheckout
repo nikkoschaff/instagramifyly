@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>5CAC8C3E-FF4E-4B89-BC09-33F3A03FF02F</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Instagramifyly</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>8C9C039CE694BE7D3AE2C4F23A59D54211305180</key>
+		<string>https://github.com/nikkoschaff/Instagramifyly</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Instagramifyly.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>8C9C039CE694BE7D3AE2C4F23A59D54211305180</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/nikkoschaff/Instagramifyly</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>8C9C039CE694BE7D3AE2C4F23A59D54211305180</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>8C9C039CE694BE7D3AE2C4F23A59D54211305180</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Instagramifyly</string>
+		</dict>
+	</array>
+</dict>
+</plist>
