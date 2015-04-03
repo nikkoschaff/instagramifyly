@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CameraViewController.h"
+//#import "FilterViewController.h"
 
-@interface SecondViewController : UIViewController
+@interface SecondViewController : UIViewController <CameraViewControllerDelegate>
 
-@property (weak, nonatomic) IBOutlet UIButton *takePhotoButton;
-
--(IBAction)takePhotoButtonPressed:(id)sender;
+@property (nonatomic) BOOL isNewImage;
 
 @end
 
