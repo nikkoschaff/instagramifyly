@@ -48,9 +48,8 @@
 {
     if (image)
     {
-        //FilterViewController *filterVC = [[FilterViewController alloc] initWithImage:image];
-        //[nav pushViewController:filterVC animated:YES];
-        NSLog(@"Got image:%@",image);
+        FilterViewController *filterVC = [[FilterViewController alloc] initWithImage:image];
+        [nav pushViewController:filterVC animated:YES];
     }
     else
     {

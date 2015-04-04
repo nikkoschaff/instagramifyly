@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "CameraViewController.h"
-//#import "FilterViewController.h"
+#import "FilterViewController.h"
 
 @interface SecondViewController : UIViewController <CameraViewControllerDelegate>
 
