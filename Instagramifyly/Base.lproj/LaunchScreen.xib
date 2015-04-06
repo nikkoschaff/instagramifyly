@@ -10,11 +10,15 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+<<<<<<< HEAD
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="40" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="A9E-Hv-uqS">
                     <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
                 <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yH9-WC-9Nd">
+=======
+                <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fth-Pc-G6o">
+>>>>>>> 79fff52daf4e8d7b10ad0e3f405adcf863834bc9
                     <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                     <color key="barTintColor" red="0.21960784310000001" green="0.36078431370000003" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <textAttributes key="titleTextAttributes">
@@ -22,6 +26,7 @@
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </textAttributes>
                     <items>
+<<<<<<< HEAD
                         <navigationItem title="Instagramifyly" id="rM5-C2-ahx"/>
                     </items>
                 </navigationBar>
@@ -32,10 +37,27 @@
                         <tabBarItem title="" image="profile" id="obB-LK-08o"/>
                         <tabBarItem title="" image="camera-icon" id="Zt2-ef-j2J"/>
                         <tabBarItem title="" image="home" id="hcG-I9-9ln"/>
+=======
+                        <navigationItem title="Instagramifyly" id="JdV-HO-x95"/>
+                    </items>
+                </navigationBar>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="40" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ve5-ZC-paa">
+                    <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </tableView>
+                <tabBar contentMode="scaleToFill" barStyle="black" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MLj-4W-GUx">
+                    <rect key="frame" x="0.0" y="618" width="375" height="49"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <items>
+                        <tabBarItem title="" image="profile" id="Iqk-LR-C54"/>
+                        <tabBarItem title="" image="camera-icon" id="g7h-jI-7hk"/>
+                        <tabBarItem title="" image="home" id="vJ7-6b-tyk"/>
+>>>>>>> 79fff52daf4e8d7b10ad0e3f405adcf863834bc9
                     </items>
                 </tabBar>
             </subviews>
             <color key="backgroundColor" red="0.21960784310000001" green="0.36078431370000003" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+<<<<<<< HEAD
             <color key="tintColor" red="0.21960784310000001" green="0.36078431370000003" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="A9E-Hv-uqS" firstAttribute="leading" secondItem="yH9-WC-9Nd" secondAttribute="leading" id="00f-Tb-HmT"/>
@@ -52,6 +74,22 @@
             <nil key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
             <point key="canvasLocation" x="548" y="455"/>
+=======
+            <constraints>
+                <constraint firstItem="ve5-ZC-paa" firstAttribute="leading" secondItem="Fth-Pc-G6o" secondAttribute="leading" id="15a-kq-XkA"/>
+                <constraint firstItem="Fth-Pc-G6o" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="4sS-Ly-wvJ"/>
+                <constraint firstItem="ve5-ZC-paa" firstAttribute="top" secondItem="Fth-Pc-G6o" secondAttribute="bottom" id="6zo-jW-lzv"/>
+                <constraint firstAttribute="trailing" secondItem="Fth-Pc-G6o" secondAttribute="trailing" id="F6P-0s-lcv"/>
+                <constraint firstItem="Fth-Pc-G6o" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="GbY-SU-Sbu"/>
+                <constraint firstItem="MLj-4W-GUx" firstAttribute="top" secondItem="ve5-ZC-paa" secondAttribute="bottom" id="IxS-FI-wK7"/>
+                <constraint firstItem="Fth-Pc-G6o" firstAttribute="trailing" secondItem="ve5-ZC-paa" secondAttribute="trailing" id="eVi-7B-rqa"/>
+                <constraint firstItem="ve5-ZC-paa" firstAttribute="trailing" secondItem="MLj-4W-GUx" secondAttribute="trailing" id="jiP-KC-q86"/>
+                <constraint firstItem="ve5-ZC-paa" firstAttribute="leading" secondItem="MLj-4W-GUx" secondAttribute="leading" id="lvJ-0P-eSD"/>
+                <constraint firstAttribute="bottom" secondItem="MLj-4W-GUx" secondAttribute="bottom" id="mv8-Fe-wlH"/>
+            </constraints>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+            <point key="canvasLocation" x="547.5" y="454.5"/>
+>>>>>>> 79fff52daf4e8d7b10ad0e3f405adcf863834bc9
         </view>
     </objects>
     <resources>

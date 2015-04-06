@@ -2,7 +2,11 @@
 //  PhotoTableViewCell.m
 //  Instagramifyly
 //
+<<<<<<< HEAD
 //  Created by Nikko Schaff on 4/4/15.
+=======
+//  Created by Nikko Schaff on 2/21/15.
+>>>>>>> 79fff52daf4e8d7b10ad0e3f405adcf863834bc9
 //  Copyright (c) 2015 Nikko Mitrano Schaff. All rights reserved.
 //
 
@@ -18,7 +22,11 @@
 -(void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 79fff52daf4e8d7b10ad0e3f405adcf863834bc9
     // Configure the view for the selected state
 }
 
@@ -38,7 +46,11 @@
         [self.caption setTextAlignment:NSTextAlignmentCenter];
         [self.caption setTextColor:[UIColor orangeColor]];
         [self.caption setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];
+<<<<<<< HEAD
         
+=======
+
+>>>>>>> 79fff52daf4e8d7b10ad0e3f405adcf863834bc9
         // Add Main Label to Content View
         [self.contentView addSubview:self.caption];
         self.imageView.image = self.image;

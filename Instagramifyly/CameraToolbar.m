@@ -2,7 +2,11 @@
 //  CameraToolbar.m
 //  Instagramifyly
 //
+<<<<<<< HEAD
 //  Created by Nikko Schaff on 4/3/15.
+=======
+//  Created by Nikko Schaff on 1/18/15.
+>>>>>>> 79fff52daf4e8d7b10ad0e3f405adcf863834bc9
 //  Copyright (c) 2015 Nikko Mitrano Schaff. All rights reserved.
 //
 
@@ -10,6 +14,10 @@
 
 @implementation CameraToolbar
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 79fff52daf4e8d7b10ad0e3f405adcf863834bc9
 -(instancetype)init
 {
     self = [super init];
@@ -28,10 +36,17 @@
         [self.photoLibraryButton addTarget:self action:@selector(photoLibraryButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
         [self.photoLibraryButton setImage:[UIImage imageNamed:@"camera"]  forState:UIControlStateNormal];
         
+<<<<<<< HEAD
         self.background = [UIView new];
         self.background.backgroundColor = [UIColor blackColor];
         
         for (UIView *view in @[self.background, self.swapCameraButton, self.cameraButton, self.photoLibraryButton])
+=======
+        self.blackround = [UIView new];
+        self.blackround.backgroundColor = [UIColor blackColor];
+        
+        for (UIView *view in @[self.blackround, self.swapCameraButton, self.cameraButton, self.photoLibraryButton])
+>>>>>>> 79fff52daf4e8d7b10ad0e3f405adcf863834bc9
         {
             [self addSubview:view];
         }
@@ -46,7 +61,11 @@
     
     CGRect blackgroundFrame = self.bounds;
     blackgroundFrame.origin.y += 10;
+<<<<<<< HEAD
     self.background.frame = blackgroundFrame;
+=======
+    self.blackround.frame = blackgroundFrame;
+>>>>>>> 79fff52daf4e8d7b10ad0e3f405adcf863834bc9
     
     CGFloat buttonWidth = CGRectGetWidth(self.bounds) / 3;
     

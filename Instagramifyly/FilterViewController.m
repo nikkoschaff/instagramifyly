@@ -2,18 +2,30 @@
 //  FilterViewController.m
 //  Instagramifyly
 //
+<<<<<<< HEAD
 //  Created by Nikko Schaff on 4/4/15.
+=======
+//  Created by Nikko Schaff on 2/7/15.
+>>>>>>> 79fff52daf4e8d7b10ad0e3f405adcf863834bc9
 //  Copyright (c) 2015 Nikko Mitrano Schaff. All rights reserved.
 //
 
 #import "FilterViewController.h"
+<<<<<<< HEAD
+=======
+
+>>>>>>> 79fff52daf4e8d7b10ad0e3f405adcf863834bc9
 #import "AssetsLibrary/AssetsLibrary.h"
 
 @interface FilterViewController ()
 
 @end
 
+<<<<<<< HEAD
 @implementation FilterViewController
+=======
+@implementation FilterViewController 
+>>>>>>> 79fff52daf4e8d7b10ad0e3f405adcf863834bc9
 
 -(void)viewDidLoad
 {
@@ -189,7 +201,10 @@
     
     thumbnail.image = self.filterImages[indexPath.row];
     label.text = self.filterTitles[indexPath.row];
+<<<<<<< HEAD
     label.textColor = [UIColor whiteColor];
+=======
+>>>>>>> 79fff52daf4e8d7b10ad0e3f405adcf863834bc9
     
     return cell;
 }
@@ -253,8 +268,15 @@
         
         dispatch_async(dispatch_get_main_queue(), ^{
             NSUInteger newIndex = self.filterImages.count;
+<<<<<<< HEAD
             [self.filterImages addObject:image];
             [self.filterTitles addObject:filterTitle];
+=======
+            
+            [self.filterImages addObject:image];
+            [self.filterTitles addObject:filterTitle];
+            
+>>>>>>> 79fff52daf4e8d7b10ad0e3f405adcf863834bc9
             [self.filterCollectionView insertItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:newIndex inSection:0]]];
         });
     }
@@ -282,6 +304,7 @@
         ALAssetsLibrary *library = [ALAssetsLibrary new];
         
         [library writeImageToSavedPhotosAlbum:[self.previewImageView.image CGImage] orientation:(ALAssetOrientation)[self.previewImageView.image imageOrientation] completionBlock:^(NSURL *assetURL, NSError *error)
+<<<<<<< HEAD
          {
              if (error)
              {
@@ -310,8 +333,43 @@
         
         
         
+=======
+        {
+            if (error)
+            {
+                NSLog(@"error");
+            }
+            else
+            {
+                
+                FilteredImage *filteredImage = [[FilteredImage alloc] initWithCaption:self.caption andURL:assetURL];
+                [FilteredImage.images addObject:filteredImage];
+                
+                NSString *storyboardName = @"Main";
+                UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
+                UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"tab_bar_controller"];
+                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                    //Here your non-main thread.
+                    [NSThread sleepForTimeInterval:0.5f];
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        //Here you returns to main thread.
+                        [self presentViewController:vc animated:YES completion:nil];
+                    });
+                });
+                
+            }
+        }];
+        
+
+
+>>>>>>> 79fff52daf4e8d7b10ad0e3f405adcf863834bc9
     }
 }
 
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 79fff52daf4e8d7b10ad0e3f405adcf863834bc9
 @end

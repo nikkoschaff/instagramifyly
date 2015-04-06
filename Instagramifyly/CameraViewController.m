@@ -2,7 +2,11 @@
 //  CameraViewController.m
 //  Instagramifyly
 //
+<<<<<<< HEAD
 //  Created by Nikko Schaff on 4/3/15.
+=======
+//  Created by Nikko Schaff on 1/18/15.
+>>>>>>> 79fff52daf4e8d7b10ad0e3f405adcf863834bc9
 //  Copyright (c) 2015 Nikko Mitrano Schaff. All rights reserved.
 //
 
@@ -14,7 +18,10 @@
 
 @implementation CameraViewController
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 79fff52daf4e8d7b10ad0e3f405adcf863834bc9
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -108,7 +115,11 @@
             }
         });
     }];
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 79fff52daf4e8d7b10ad0e3f405adcf863834bc9
     // Setup cancel button
     UIImage *cancelImage = [UIImage imageNamed:@"x"];
     UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithImage:cancelImage style:UIBarButtonItemStyleDone target:self action:@selector(cancelPressed:)];
@@ -156,9 +167,15 @@
             [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
                 fakeView.alpha = 0;
             } completion:^(BOOL finished)
+<<<<<<< HEAD
              {
                  [fakeView removeFromSuperview];
              }];
+=======
+            {
+                [fakeView removeFromSuperview];
+            }];
+>>>>>>> 79fff52daf4e8d7b10ad0e3f405adcf863834bc9
         }
     }
 }
@@ -186,6 +203,7 @@
     }
     
     [self.stillImageOutput captureStillImageAsynchronouslyFromConnection:videoConnection completionHandler: ^(CMSampleBufferRef imageSampleBuffer, NSError *error)
+<<<<<<< HEAD
      {
          if (imageSampleBuffer)
          {
@@ -206,6 +224,28 @@
              
          }
      }];
+=======
+    {
+        if (imageSampleBuffer)
+        {
+            NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageSampleBuffer];
+            UIImage *image = [UIImage imageWithData:imageData scale:[UIScreen mainScreen].scale];
+            UIImage *fixedImage = [self scaleAndRotateImage:image];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.delegate cameraViewController:self didCompleteWithImage:fixedImage];
+            });
+        }
+        else
+        {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:error.localizedDescription message:error.localizedRecoverySuggestion delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                [alert show];
+            });
+            
+        }
+    }];
+>>>>>>> 79fff52daf4e8d7b10ad0e3f405adcf863834bc9
 }
 
 -(UIImage *)scaleAndRotateImage:(UIImage *)image
@@ -322,5 +362,8 @@
     return imageCopy;
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 79fff52daf4e8d7b10ad0e3f405adcf863834bc9
 @end

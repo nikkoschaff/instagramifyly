@@ -29,7 +29,11 @@
     [self.tableView registerClass:[PhotoTableViewCell class] forCellReuseIdentifier:@"PhotoRowCell"];
     [self.collectionView setBounces:YES];
     [self.collectionView setAlwaysBounceVertical:YES];
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 79fff52daf4e8d7b10ad0e3f405adcf863834bc9
     self.collectionView.bounces = YES;
     [self.collectionView setShowsHorizontalScrollIndicator:NO];
     [self.collectionView setShowsVerticalScrollIndicator:NO];
@@ -61,6 +65,7 @@
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return photos.count;
+<<<<<<< HEAD
 }
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -132,6 +137,79 @@
 
 #pragma mark – UICollectionViewDelegate
 
+=======
+}
+
+-(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"PhotoRowCell";
+    
+    FilteredImage *fimage = [photos objectAtIndex:indexPath.row];
+    
+    PhotoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    if (cell == nil)
+    {
+        cell = (PhotoTableViewCell*)[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+
+    [cell.caption setText:fimage.caption];
+    cell.image = fimage.image;
+    cell.backgroundView = [[UIImageView alloc] initWithImage:fimage.image];
+    [cell setUserInteractionEnabled:NO];
+    return cell;
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return NO;
+}
+
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return NO;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 568;
+}
+
+
+#pragma mark CollectionView
+
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return self.photos.count;
+}
+
+-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+{
+    return 1;
+}
+
+-(PhotoCollectionViewCell*)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CollectionCellIdentifier = @"PhotoCollectionCell";
+    
+    PhotoCollectionViewCell *cell = (PhotoCollectionViewCell*)[collectionView dequeueReusableCellWithReuseIdentifier:CollectionCellIdentifier forIndexPath:indexPath];
+    
+    if (cell == nil)
+    {
+        cell = [PhotoCollectionViewCell new];
+    }
+    
+    FilteredImage *fimage = [photos objectAtIndex:indexPath.row];
+    cell.backgroundColor = [UIColor blueColor];
+    cell.backgroundView = [[UIImageView alloc] initWithImage:fimage.image];
+    
+    [cell setUserInteractionEnabled:NO];
+    return cell;
+}
+
+#pragma mark – UICollectionViewDelegate
+
+>>>>>>> 79fff52daf4e8d7b10ad0e3f405adcf863834bc9
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     return CGSizeMake(155,155);
@@ -201,6 +279,7 @@
         self.profilePicture.layer.borderColor=[[UIColor blackColor] CGColor];
     }];
     return YES;
+<<<<<<< HEAD
 }
 
 -(IBAction)editProfileButtonClicked:(id)sender
@@ -240,5 +319,47 @@
     [self.tableView setHidden:NO];
     [self.collectionView setHidden:YES];
 }
+=======
+}
+
+-(IBAction)editProfileButtonClicked:(id)sender
+{
+    [self startMediaBrowserFromViewController:self usingDelegate:self];
+}
+
+-(IBAction)editTextButtonClicked:(id)sender
+{
+    if ([self.editTextButton.title isEqualToString:@"Edit Description"])
+    {
+        [self.textView becomeFirstResponder];
+    }
+    else
+    {
+        [self.editTextButton setTitle:@"Edit Description"];
+        [self.textView endEditing:YES];
+    }
+}
+
+-(void)textViewDidBeginEditing:(UITextView *)textView
+{
+    [self.editTextButton setTitle:@"Save"];
+}
+
+-(IBAction)gridButtonClicked:(id)sender
+{
+    NSLog(@"Grid button clicked");
+    [self.tableView setHidden:YES];
+    [self.collectionView setHidden:NO];
+}
+
+
+-(IBAction)listButtonClicked:(id)sender
+{
+    NSLog(@"List button clicked");
+    [self.tableView setHidden:NO];
+    [self.collectionView setHidden:YES];
+}
+
+>>>>>>> 79fff52daf4e8d7b10ad0e3f405adcf863834bc9
 
 @end
